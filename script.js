@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const wyswietlaczKierunkuJazdy = document.getElementById('wyswietlacz-kierunku-jazdy');
     const wyswietlaczPracyDrzwi = document.getElementById('wyswietlacz-pracy-drzwi');
     const wyswietlaczWartosciPokonanePietra = document.getElementById('wyswietlacz-wartosci-pokonane-pietra');
-    const wyswietlaczWartosciPrzebytaOdleglosc = document.getElemwntById('wyswietlacz-wartosci-przebyta-odleglosc');
+    const wyswietlaczWartosciPrzebytaOdleglosc = document.getElementById('wyswietlacz-wartosci-przebyta-odleglosc');
 
     // Funkcja do aktualizacji wyświetlaczy
     function aktualizujWyswietlacze(data) {
