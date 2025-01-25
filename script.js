@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const wyswietlaczPracyDrzwi = document.getElementById('wyswietlacz-pracy-drzwi');
     const wyswietlaczWartosciPokonanePietra = document.getElementById('wyswietlacz-wartosci-pokonane-pietra');
     const wyswietlaczWartosciPrzebytaOdleglosc = document.getElementById('wyswietlacz-wartosci-przebyta-odleglosc');
-
+    const wyswietlaczWartosciPrzystanki = document.getElementById('wyswietlacz-wartosci-przystanki');
+    
     // Funkcja do aktualizacji wyświetlaczy
     function aktualizujWyswietlacze(data) {
         const lokalizacjaWindy = data.windy_data.lokalizacjaWindy;
@@ -28,8 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function aktualizujWyswietlaczeStatystykiWindy(data) {
         const pokonanePietra = data.pokonane_pietra;
         const przebytaOdleglosc = data.przebyta_odleglosc;
+        const przystanki = data.zaliczone_przystanki;
         wyswietlaczWartosciPokonanePietra.textContent = pokonanePietra;
         wyswietlaczWartosciPrzebytaOdleglosc.textContent = przebytaOdleglosc;
+        wyswietlaczWartosciPrzystanki.textContent = przystanki;
     }
 
     // Funkcja do pobierania danych z serwera
