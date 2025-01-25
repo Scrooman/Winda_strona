@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const pokonanePietra = data.pokonane_pietra;
         const przebytaOdleglosc = data.przebyta_odleglosc;
         wyswietlaczWartosciPokonanePietra.textContent = pokonanePietra;
-        wyswietlaczWartosciPrzebytaOdleglosc.textContent = przebytaOdleglosc
+        wyswietlaczWartosciPrzebytaOdleglosc.textContent = przebytaOdleglosc;
     }
 
     // Funkcja do pobierania danych z serwera
