@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const nowePolecenieWindy = data.windy_data.polecenia[0]; // Pobierz wartość poleceniaWindy[0] z serwera
 
                 // Sprawdź, czy wartość poleceniaWindy[0] z serwera jest inna niż lokalna wartość
-                if (nowePolecenieWindy !== lokalnePolecenieWindy && winda_data.get('wydarzenieStatusSymulacji') === true) {
+                if (nowePolecenieWindy !== lokalnePolecenieWindy && data.windy_data.wydarzenieStatusSymulacji === true) {
                     lokalnePolecenieWindy = nowePolecenieWindy; // Zaktualizuj lokalną wartość
                     aktualizujRuchWindy(data); // Wykonaj funkcję aktualizujRuchWindy()
                 }
