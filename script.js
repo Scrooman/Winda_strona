@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const statusSymulacji = data.statusSymulacji;
         if (statusSymulacji === 1) {
             wyswietlaczWartosciStatusSymulacjiSymbol = 'Aktywna';
-        } else if (statusSymulacji === 1) {
+        } else if (statusSymulacji === 0) {
             wyswietlaczWartosciStatusSymulacjiSymbol = 'Nieaktywna';
         } else {
             wyswietlaczWartosciStatusSymulacjiSymbol = ' ';
@@ -191,5 +191,5 @@ document.addEventListener('DOMContentLoaded', () => {
     pobierzStatystykiWindy();
     setInterval(pobierzStatusWindy, 1000);
     setInterval(pobierzStatystykiWindy, 1000);
-    setInterval(pobierzStatusSymulacji, 1000);
+    setInterval(pobierzStatusSymulacji, 60000);
 });
