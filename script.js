@@ -54,14 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         if (suwakCzestotliwosciGenerowania) {
-            suwakCzestotliwosciGenerowania.addEventListener('input', async function() {
-                const zmiennaCzęstotliwościGenerowaniaPasażerów = await pobierzStatusSymulacji();
-                if (zmiennaCzęstotliwościGenerowaniaPasażerów === null) {
-                    console.error('Nie udało się pobrać częstotliwości generowania pasażerów.');
-                    return;
-                }
-                suwakCzestotliwosciGenerowaniaWartosc.textContent = suwakCzestotliwosciGenerowania.value;
-                
+            suwakCzestotliwosciGenerowania.addEventListener('input', async function() {           
     
                 fetch('https://winda.onrender.com/zmien_czestotliwosc', {
                     method: 'POST',
@@ -222,7 +215,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return fetch('https://winda.onrender.com/get_status_symulacji')
             .then(response => response.json())
             .then(data => {
-                const statusSymulacji = data.statusSymulacji; // Pobierz wartość statusu symulacji z serwera
+                const statusSymulacji = data.statusSymulacji;
+                const zmiennaCzestotliwosciGenerowaniaPasażerów = data.zmiennaCzestotliwosciGenerowaniaPasażerów;
                 aktualizujWyswietlaczeStatusSymulacji(data)
                 aktualizujSuwakCzestotliosci(data); 
                 return statusSymulacji;
