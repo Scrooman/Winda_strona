@@ -191,4 +191,5 @@ document.addEventListener('DOMContentLoaded', () => {
     pobierzStatystykiWindy();
     setInterval(pobierzStatusWindy, 1000);
     setInterval(pobierzStatystykiWindy, 1000);
+    setInterval(pobierzStatusSymulacji, 1000);
 });
