@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.error('Nie udało się pobrać częstotliwości generowania pasażerów.');
                     return;
                 }
-                suwakCzestotliwosciGenerowaniaWartosc.textContent = suwak.value;
+                suwakCzestotliwosciGenerowaniaWartosc.textContent = suwakCzestotliwosciGenerowaniaWartosc.value;
                 
     
                 fetch('https://winda.onrender.com/zmien_czestotliwosc', {
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ zmiennaCzęstotliwościGenerowaniaPasażerów: suwak.value })
+                    body: JSON.stringify({ zmiennaCzęstotliwościGenerowaniaPasażerów: suwakCzestotliwosciGenerowaniaWartosc.value })
                 })
                 .then(response => {
                     if (!response.ok) {
