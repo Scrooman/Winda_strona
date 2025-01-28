@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const wyswietlaczWartosciPrzebytaOdleglosc = document.getElementById('wyswietlacz-wartosci-przebyta-odleglosc');
     const wyswietlaczWartosciPrzystanki = document.getElementById('wyswietlacz-wartosci-przystanki');
     const wyswietlaczWartosciStatusSymulacji = document.getElementById('wyswietlacz-wartosci-status-symulacji')
-    const suwakCzestotliwosciGenerowania = document.getElementById('suwak-czestotliwosci-generowania');
-    const suwakCzestotliwosciGenerowaniaWartosc = document.getElementById('suwak-czestotliwosci-generowania-wartosc');
     const elevator = document.getElementById('elevator');
     const shaftHeight = 1100; // Wysokość szybu
     const floors = 11; // Liczba pięter
@@ -17,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (window.location.pathname.endsWith('symulacja_wlasciwosci.html')) {
         const toggleSimulationButton = document.getElementById('toggle-simulation');
+        const suwakCzestotliwosciGenerowania = document.getElementById('suwak-czestotliwosci-generowania');
+        const suwakCzestotliwosciGenerowaniaWartosc = document.getElementById('suwak-czestotliwosci-generowania-wartosc');
+
         if (toggleSimulationButton) {
             toggleSimulationButton.addEventListener('click', async function(event) {
                 event.preventDefault();
@@ -59,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.error('Nie udało się pobrać częstotliwości generowania pasażerów.');
                     return;
                 }
-                //suwakCzestotliwosciGenerowaniaWartosc.textContent = suwakCzestotliwosciGenerowania.value;
+                suwakCzestotliwosciGenerowaniaWartosc.textContent = suwakCzestotliwosciGenerowania.value;
                 
     
                 fetch('https://winda.onrender.com/zmien_czestotliwosc', {
@@ -162,7 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function aktualizujWyswietlaczeStatusSymulacji(data) {
         const statusSymulacji = data.statusSymulacji;
-        const zmiennaCzestotliwosciGenerowaniaPasażerów = data.zmiennaCzestotliwosciGenerowaniaPasażerów;
         if (statusSymulacji === 1) {
             wyswietlaczWartosciStatusSymulacjiSymbol = 'Aktywna';
         } else if (statusSymulacji === 0) {
@@ -173,10 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (wyswietlaczWartosciStatusSymulacji) {
             wyswietlaczWartosciStatusSymulacji.textContent = wyswietlaczWartosciStatusSymulacjiSymbol;
-        }
-        if (zmiennaCzestotliwosciGenerowaniaPasażerów !== null) {
-            suwakCzestotliwosciGenerowania.value = zmiennaCzestotliwosciGenerowaniaPasażerów;
-            suwakCzestotliwosciGenerowaniaWartosc.textContent = zmiennaCzestotliwosciGenerowaniaPasażerów;
         }
     }
         
