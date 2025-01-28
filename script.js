@@ -174,8 +174,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (wyswietlaczWartosciStatusSymulacji) {
             wyswietlaczWartosciStatusSymulacji.textContent = wyswietlaczWartosciStatusSymulacjiSymbol;
         }
+        
     }
         
+
+    function aktualizujSuwakCzestotliosci(data) {
+        const zmiennaCzestotliwosciGenerowaniaPasażerów = data.zmiennaCzestotliwosciGenerowaniaPasażerów;
+        if (zmiennaCzestotliwosciGenerowaniaPasażerów !== null) {
+            suwakCzestotliwosciGenerowania.value = zmiennaCzestotliwosciGenerowaniaPasażerów;
+            suwakCzestotliwosciGenerowaniaWartosc.textContent = zmiennaCzestotliwosciGenerowaniaPasażerów;
+        }
+    }
+
+
     // Funkcja do pobierania danych z serwera
     function pobierzStatusWindy() {
         fetch('https://winda.onrender.com/get_winda_status')
@@ -212,7 +223,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 const statusSymulacji = data.statusSymulacji; // Pobierz wartość statusu symulacji z serwera
-                aktualizujWyswietlaczeStatusSymulacji(data) 
+                aktualizujWyswietlaczeStatusSymulacji(data)
+                aktualizujSuwakCzestotliosci(data); 
                 return statusSymulacji;
             })
             .catch(error => {
