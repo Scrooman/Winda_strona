@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPosition = 0; // Obecne piętro windy
     let lokalnePolecenieWindy = null; // Zmienna do przechowywania lokalnej wartości poleceniaWindy[0]
 
-    document.getElementById('toggle-simulation').addEventListener('click', async function(event) {
+    if (window.location.pathname.endsWith('symulacja_wlasciwosci.html')) {
         const toggleSimulationButton = document.getElementById('toggle-simulation');
         if (toggleSimulationButton) {
             toggleSimulationButton.addEventListener('click', async function(event) {
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         }
-    });
+    }
 
 
     // Inicjalizacja windy
