@@ -163,6 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function aktualizujWyswietlaczeStatusSymulacji(data) {
         const statusSymulacji = data.statusSymulacji;
+        const zmiennaCzęstotliwościGenerowaniaPasażerów = data.zmiennaCzęstotliwościGenerowaniaPasażerów;
         if (statusSymulacji === 1) {
             wyswietlaczWartosciStatusSymulacjiSymbol = 'Aktywna';
         } else if (statusSymulacji === 0) {
@@ -173,6 +174,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (wyswietlaczWartosciStatusSymulacji) {
             wyswietlaczWartosciStatusSymulacji.textContent = wyswietlaczWartosciStatusSymulacjiSymbol;
+        }
+        if (zmiennaCzestotliwosciGenerowaniaPasażerów !== null) {
+            suwakCzestotliwosciGenerowania.value = zmiennaCzestotliwosciGenerowaniaPasażerów;
+            suwakCzestotliwosciGenerowaniaWartosc.textContent = zmiennaCzestotliwosciGenerowaniaPasażerów;
         }
     }
         
