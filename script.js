@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const wyswietlaczWartosciPokonanePietra = document.getElementById('wyswietlacz-wartosci-pokonane-pietra');
     const wyswietlaczWartosciPrzebytaOdleglosc = document.getElementById('wyswietlacz-wartosci-przebyta-odleglosc');
     const wyswietlaczWartosciPrzystanki = document.getElementById('wyswietlacz-wartosci-przystanki');
+    const wyswietlaczWartosciStatusSymulacji = document.getElementById('wyswietlacz-wartosci-status-symulacji')
     const elevator = document.getElementById('elevator');
     const shaftHeight = 1100; // Wysokość szybu
     const floors = 11; // Liczba pięter
@@ -111,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const pokonanePietra = data.pokonane_pietra;
         const przebytaOdleglosc = data.przebyta_odleglosc;
         const przystanki = data.zaliczone_przystanki;
+        
 
         if (wyswietlaczWartosciPokonanePietra) {
             wyswietlaczWartosciPokonanePietra.textContent = pokonanePietra;
@@ -123,6 +125,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function aktualizujWyswietlaczeStatusSymulacji(data) {
+        const statusSymulacji = data.dane_symulacji.statusSymulacji;
+        if (statusSymulacji === 1) {
+            wyswietlaczWartosciStatusSymulacjiSymbol = 'Aktywna';
+        } else if (statusSymulacji === 1) {
+            wyswietlaczWartosciStatusSymulacjiSymbol = 'Nieaktywna';
+        } else {
+            wyswietlaczWartosciStatusSymulacjiSymbol = ' ';
+        }
+
+        if (wyswietlaczWartosciStatusSymulacji) {
+            wyswietlaczWartosciStatusSymulacji.textContent = wyswietlaczWartosciStatusSymulacjiSymbol;
+        }
+    }
+        
     // Funkcja do pobierania danych z serwera
     function pobierzStatusWindy() {
         fetch('https://winda.onrender.com/get_winda_status')
