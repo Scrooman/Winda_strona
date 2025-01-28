@@ -12,6 +12,38 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPosition = 0; // Obecne piętro windy
     let lokalnePolecenieWindy = null; // Zmienna do przechowywania lokalnej wartości poleceniaWindy[0]
 
+    document.getElementById('toggle-simulation').addEventListener('click', async function(event) {
+        event.preventDefault();
+        
+        const statusSymulacji = await pobierzStatusSymulacji();
+        if (statusSymulacji === null) {
+            console.error('Nie udało się pobrać statusu symulacji.');
+            return;
+        }
+    
+        const status = statusSymulacji === 0 ? 1 : 0;
+        
+        fetch('/wlacz_wylacz_symulacje', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ status: status })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Status symulacji:', data.statusSymulacji);
+        })
+        .catch(error => {
+            console.error('Błąd połączenia:', error);
+        });
+    });
+
 
     // Inicjalizacja windy
     window.moveElevator = function(targetFloor) {
@@ -128,39 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return null;
             });
     }
-
-
-    document.getElementById('toggle-simulation').addEventListener('click', async function(event) {
-        event.preventDefault();
-        
-        const statusSymulacji = await pobierzStatusSymulacji();
-        if (statusSymulacji === null) {
-            console.error('Nie udało się pobrać statusu symulacji.');
-            return;
-        }
-    
-        const status = statusSymulacji === 0 ? 1 : 0;
-        
-        fetch('/wlacz_wylacz_symulacje', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ status: status })
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Status symulacji:', data.statusSymulacji);
-        })
-        .catch(error => {
-            console.error('Błąd połączenia:', error);
-        });
-    });
 
 
     // Początkowe pobranie danych
