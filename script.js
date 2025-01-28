@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
                 aktualizujWyswietlacze(data);
-                aktualizujWyswietlaczeStatusSymulacji(data)              
+            aktualizujWyswietlaczeStatusSymulacji(data)              
             })
             .catch(error => {
                 console.error('Błąd podczas pobierania danych z serwera:', error);
