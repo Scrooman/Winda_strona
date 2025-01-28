@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
                 const status = statusSymulacji === 0 ? 1 : 0;
                 
-                fetch('/wlacz_wylacz_symulacje', {
+                fetch('https://winda.onrender.com/wlacz_wylacz_symulacje', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -130,13 +130,14 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 const nowePolecenieWindy = data.windy_data.polecenia[0]; // Pobierz wartość poleceniaWindy[0] z serwera
                 
-
                 // Sprawdź, czy wartość poleceniaWindy[0] z serwera jest inna niż lokalna wartość
                 if (nowePolecenieWindy !== lokalnePolecenieWindy && data.dane_symulacji.wydarzenieStatusSymulacji === true) {
                     lokalnePolecenieWindy = nowePolecenieWindy; // Zaktualizuj lokalną wartość
-                    aktualizujRuchWindy(data); // Wykonaj funkcję aktualizujRuchWindy()
+                    if (window.location.pathname.endsWith('index.html')) {
+                        aktualizujRuchWindy(data); // Wykonaj funkcję aktualizujRuchWindy()
+                    }
                 }
-                aktualizujWyswietlacze(data);
+                aktualizujWyswietlacze(data);              
             })
             .catch(error => {
                 console.error('Błąd podczas pobierania danych z serwera:', error);
