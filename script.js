@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (window.location.pathname.endsWith('symulacja_wlasciwosci.html')) {
         const toggleSimulationButton = document.getElementById('toggle-simulation');
+        const suwakCzestotliwosciGenerowania = document.getElementById('suwak-czestotliwosci-generowania');
+        const suwakCzestotliwosciGenerowaniaWartosc = document.getElementById('suwak-czestotliwosci-generowania-wartosc');
+
         if (toggleSimulationButton) {
             toggleSimulationButton.addEventListener('click', async function(event) {
                 event.preventDefault();
@@ -42,6 +45,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .then(data => {
                     console.log('Status symulacji:', data.statusSymulacji);
+                })
+                .catch(error => {
+                    console.error('Błąd połączenia:', error);
+                });
+            });
+        }
+
+
+        if (suwakCzestotliwosciGenerowania) {
+            suwakCzestotliwosciGenerowania.addEventListener('input', async function() {
+                const zmiennaCzęstotliwościGenerowaniaPasażerów = await pobierzStatusSymulacji();
+                if (zmiennaCzęstotliwościGenerowaniaPasażerów === null) {
+                    console.error('Nie udało się pobrać częstotliwości generowania pasażerów.');
+                    return;
+                }
+                suwakCzestotliwosciGenerowaniaWartosc.textContent = suwak.value;
+                
+    
+                fetch('https://winda.onrender.com/zmien_czestotliwosc', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ zmiennaCzęstotliwościGenerowaniaPasażerów: suwak.value })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Wartość ustawiona:', data);
                 })
                 .catch(error => {
                     console.error('Błąd połączenia:', error);
