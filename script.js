@@ -92,15 +92,19 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 const nowePolecenieWindy = data.windy_data.polecenia[0]; // Pobierz wartość poleceniaWindy[0] z serwera
+                
 
                 // Sprawdź, czy wartość poleceniaWindy[0] z serwera jest inna niż lokalna wartość
-                if (nowePolecenieWindy !== lokalnePolecenieWindy && data.windy_data.wydarzenieStatusSymulacji === true) {
+                if (nowePolecenieWindy !== lokalnePolecenieWindy && data.dane_symulacji.wydarzenieStatusSymulacji === true) {
                     lokalnePolecenieWindy = nowePolecenieWindy; // Zaktualizuj lokalną wartość
                     aktualizujRuchWindy(data); // Wykonaj funkcję aktualizujRuchWindy()
                 }
                 aktualizujWyswietlacze(data);
             })
-            .catch(error => console.error('Błąd podczas pobierania danych z serwera:', error));
+            .catch(error => {
+                console.error('Błąd podczas pobierania danych z serwera:', error);
+                return null;
+            });
     }
 
     function pobierzStatystykiWindy() {
@@ -112,6 +116,51 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Błąd podczas pobierania danych z serwera:', error));
     }
 
+    function pobierzStatusSymulacji() {
+        return fetch('https://winda.onrender.com/get_status_symulacji')
+            .then(response => response.json())
+            .then(data => {
+                const statusSymulacji = data.statusSymulacji; // Pobierz wartość statusu symulacji z serwera
+                return statusSymulacji;
+            })
+            .catch(error => {
+                console.error('Błąd podczas pobierania danych z serwera:', error);
+                return null;
+            });
+    }
+
+
+    document.getElementById('toggle-simulation').addEventListener('click', async function(event) {
+        event.preventDefault();
+        
+        const statusSymulacji = await pobierzStatusSymulacji();
+        if (statusSymulacji === null) {
+            console.error('Nie udało się pobrać statusu symulacji.');
+            return;
+        }
+    
+        const status = statusSymulacji === 0 ? 1 : 0;
+        
+        fetch('/wlacz_wylacz_symulacje', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ status: status })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Status symulacji:', data.statusSymulacji);
+        })
+        .catch(error => {
+            console.error('Błąd połączenia:', error);
+        });
+    });
 
 
     // Początkowe pobranie danych
