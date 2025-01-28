@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ status: status })
+                    body: JSON.stringify({ 'statusSymulacji': status })
                 })
                 .then(response => {
                     if (!response.ok) {
