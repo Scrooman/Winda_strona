@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function aktualizujWyswietlaczeStatusSymulacji(data) {
-        const statusSymulacji = data.dane_symulacji.statusSymulacji;
+        const statusSymulacji = data.statusSymulacji;
         if (statusSymulacji === 1) {
             wyswietlaczWartosciStatusSymulacjiSymbol = 'Aktywna';
         } else if (statusSymulacji === 1) {
