@@ -55,10 +55,114 @@ body {
     gap: 10px; /* Odstęp między elementami */
     padding: 10px; /* Wewnętrzny odstęp */
     margin: 10px 0; /* Zewnętrzny odstęp */
-    background-color: #f9f9f9; /* Kolor tła */
+    background-color: #ffffff; /* Kolor tła */
     border: 1px solid #ccc; /* Obramowanie */
     border-radius: 5px; /* Zaokrąglenie rogów */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Cień */
+    width: 100%; /* Szerokość elementu */
+    max-width: 600px; /* Maksymalna szerokość elementu */
+}
+
+.floor-number-labels {
+	display: flex;
+	flex-direction: column-reverse;
+	height: 1100px;
+	justify-content: space-between;
+	text-align: center;
+	margin: 0;
+}
+
+.numer-pietra-container {
+	height: 90px; /* Wysokość piętra */
+	width: 50px;
+	display: flex;
+	justify-content: center; /* Wyrównanie tekstu w poziomie */
+	align-items: center; /* Wyrównanie tekstu w pionie */
+	margin: 0;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	background-color: #fffefe; /* Kolor tła */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Cień */
+}
+
+.przyciski-sekcja {
+	position: relative;
+	overflow: hidden;
+	height: calc(1100px / 11);
+	width: 30px;
+	background: #f0f0f0;
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: space-between;
+	margin: 0;
+	border: 2px solid #ccc;
+    border-radius: 2px;
+}
+
+.pasazerowie {
+	position: relative;
+	overflow: hidden;
+	background: #ffffff;
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: space-between;
+	margin: 0;
+	width: 170px;
+	height: calc(1100px / 11);
+}
+
+.pasazerowie img {
+    width: 45px; /* Dopasowanie szerokości grafiki do szerokości kontenera */
+    height: 85px; /* Automatyczne dostosowanie wysokości grafiki */
+    display: block; /* Usunięcie odstępów poniżej grafiki */
+}
+
+
+.wyswietlacz-do-gory {
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: space-evenly;
+	margin: 0;
+	background-color: #8B0000;
+    color: #FF0000;
+    font-family: "Helvetica", sans-serif;
+    font-size: 12px;
+    text-align: center;
+    border: 1px solid #000000;
+    border-radius: 50%;
+	max-width: 25px;
+	max-height: 25px; 
+}
+
+.wyswietlacz-do-dolu {
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: space-evenly;
+	margin: 0;
+	background-color: #8B0000;
+    color: #FF0000;
+    font-family: "Helvetica", sans-serif;
+    font-size: 12px;
+    text-align: center;
+    border: 1px solid #000000;
+    border-radius: 50%;
+	max-width: 25px;
+	max-height: 25px; 
+}
+
+.zawartosc-pietra-container {
+    display: flex; /* Ustawia elementy wewnątrz w linii */
+    align-items: center; /* Wyrównuje elementy wewnątrz w pionie */
+    justify-content: center;
+    margin: 10px 0; /* Zewnętrzny odstęp */
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	background-color: #f9f9f9; /* Kolor tła */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Cień */
     width: 100%; /* Szerokość elementu */
     max-width: 600px; /* Maksymalna szerokość elementu */
 }
@@ -126,7 +230,7 @@ h1 {
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
-	gap: 20px;
+	gap: 0px;
 }
 
 .shaft {
@@ -170,11 +274,12 @@ h1 {
 }
 
 .floor-labels div {
-	height: calc(1100px / 11); /* Wysokość piętra */
-	line-height: calc(1100px / 11);
+	height: 90px; /* Wysokość piętra */
+	/*width: 200px; */
 	display: flex;
-	justify-content: center; /* Wyrównanie tekstu w poziomie */
-	align-items: center; /* Wyrównanie tekstu w pionie */
+	justify-content: space-evenly; /* Wyrównanie tekstu w poziomie */
+	/* align-items: center; */ /* Wyrównanie tekstu w pionie */
+	margin: 0;
 }
 
 .controls {
