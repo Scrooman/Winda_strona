@@ -154,8 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         aktualizujRuchWindy(data); // Wykonaj funkcję aktualizujRuchWindy()
                     }
                 }
-                aktualizujWyswietlacze(data);
-            aktualizujWyswietlaczeStatusSymulacji(data)              
+                aktualizujWyswietlacze(data);             
             })
             .catch(error => {
                 console.error('Błąd podczas pobierania danych z serwera:', error);
@@ -177,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 const statusSymulacji = data.statusSymulacji; // Pobierz wartość statusu symulacji z serwera
+                aktualizujWyswietlaczeStatusSymulacji(data) 
                 return statusSymulacji;
             })
             .catch(error => {
