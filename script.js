@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.error('Nie udało się pobrać częstotliwości generowania pasażerów.');
                     return;
                 }
-                suwakCzestotliwosciGenerowaniaWartosc.textContent = suwakCzestotliwosciGenerowania;
+                suwakCzestotliwosciGenerowaniaWartosc.textContent = suwakCzestotliwosciGenerowania.value;
                 
     
                 fetch('https://winda.onrender.com/zmien_czestotliwosc', {
