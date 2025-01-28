@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const wyswietlaczWartosciPrzebytaOdleglosc = document.getElementById('wyswietlacz-wartosci-przebyta-odleglosc');
     const wyswietlaczWartosciPrzystanki = document.getElementById('wyswietlacz-wartosci-przystanki');
     const wyswietlaczWartosciStatusSymulacji = document.getElementById('wyswietlacz-wartosci-status-symulacji')
+    const suwakCzestotliwosciGenerowania = document.getElementById('suwak-czestotliwosci-generowania');
+    const suwakCzestotliwosciGenerowaniaWartosc = document.getElementById('suwak-czestotliwosci-generowania-wartosc');
     const elevator = document.getElementById('elevator');
     const shaftHeight = 1100; // Wysokość szybu
     const floors = 11; // Liczba pięter
@@ -15,8 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (window.location.pathname.endsWith('symulacja_wlasciwosci.html')) {
         const toggleSimulationButton = document.getElementById('toggle-simulation');
-        const suwakCzestotliwosciGenerowania = document.getElementById('suwak-czestotliwosci-generowania');
-        const suwakCzestotliwosciGenerowaniaWartosc = document.getElementById('suwak-czestotliwosci-generowania-wartosc');
 
         if (toggleSimulationButton) {
             toggleSimulationButton.addEventListener('click', async function(event) {
