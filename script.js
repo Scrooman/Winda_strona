@@ -154,7 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         aktualizujRuchWindy(data); // Wykonaj funkcję aktualizujRuchWindy()
                     }
                 }
-                aktualizujWyswietlacze(data);              
+                aktualizujWyswietlacze(data);
+                aktualizujWyswietlaczeStatusSymulacji(data)              
             })
             .catch(error => {
                 console.error('Błąd podczas pobierania danych z serwera:', error);
