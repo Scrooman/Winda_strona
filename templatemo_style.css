@@ -2,6 +2,15 @@
 CSS Credit: http://www.templatemo.com/
 */
 
+@keyframes move-left-to-right {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -114,7 +123,8 @@ body {
 .pasazerowie img {
     width: 45px; /* Dopasowanie szerokości grafiki do szerokości kontenera */
     height: 85px; /* Automatyczne dostosowanie wysokości grafiki */
-    display: block; /* Usunięcie odstępów poniżej grafiki */
+    display: none; /* Domyślnie ukryj grafikę */
+	animation: move-left-to-right 1s linear; /* Dodanie animacji */
 }
 
 

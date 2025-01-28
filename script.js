@@ -180,6 +180,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    function aktualizujGrafike(lokalizacjaWindy) {
+        // Pobierz wszystkie elementy z klasą 'pasazerowie'
+        const pasazerowieElements = document.querySelectorAll('.pasazerowie');
+    
+        pasazerowieElements.forEach(element => {
+            // Pobierz ID elementu i wyciągnij ostatni znak
+            const id = element.id;
+            const match = id.match(/\d+$/);
+            
+            if (match) {
+                const idNumber = match[0];
+    
+                // Sprawdź, czy lokalizacjaWindy jest równa wartości z końca nazwy ID
+                if (parseInt(idNumber) === lokalizacjaWindy) {
+                    const img = element.querySelector('img');
+                    // Wyświetl grafikę
+                    img.style.display = 'block';
+                    // Dodaj nasłuchiwanie na zakończenie animacji
+                    img.addEventListener('animationend', () => {
+                        img.style.display = 'none';
+                    }, { once: true });
+                } else {
+                    // Ukryj grafikę
+                    element.querySelector('img').style.display = 'none';
+                }
+            }
+        });
+    }
+
     // Funkcja do pobierania danych z serwera
     function pobierzStatusWindy() {
         fetch('https://winda.onrender.com/get_winda_status')
@@ -235,4 +264,5 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(pobierzStatusWindy, 1000);
     setInterval(pobierzStatystykiWindy, 1000);
     setInterval(pobierzStatusSymulacji, 60000);
+    setInterval(() => aktualizujGrafike(0), 3000);
 });
