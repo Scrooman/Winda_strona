@@ -160,10 +160,13 @@ document.addEventListener('DOMContentLoaded', () => {
             wyswietlaczWartosciPrzystanki.textContent = przystanki;
         }
     }
+    
+let zmiennaCzestotliwosciGenerowaniaPasażerów = null;
 
     function aktualizujWyswietlaczeStatusSymulacji(data) {
         const statusSymulacji = data.statusSymulacji;
-        const zmiennaCzęstotliwościGenerowaniaPasażerów = data.zmiennaCzęstotliwościGenerowaniaPasażerów;
+        zmiennaCzęstotliwościGenerowaniaPasażerów = data.zmiennaCzęstotliwościGenerowaniaPasażerów;
+        
         if (statusSymulacji === 1) {
             wyswietlaczWartosciStatusSymulacjiSymbol = 'Aktywna';
         } else if (statusSymulacji === 0) {
