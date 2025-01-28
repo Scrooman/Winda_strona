@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
 
     function aktualizujSuwakCzestotliosci(data) {
-        const zmiennaCzestotliwosciGenerowaniaPasażerów = parseInt(data.zmiennaCzestotliwosciGenerowaniaPasażerów, 10);
+        const zmiennaCzestotliwosciGenerowaniaPasażerów = data.zmiennaCzestotliwosciGenerowaniaPasażerów;
         if (zmiennaCzestotliwosciGenerowaniaPasażerów !== null) {
             suwakCzestotliwosciGenerowania.value = zmiennaCzestotliwosciGenerowaniaPasażerów;
             suwakCzestotliwosciGenerowaniaWartosc.textContent = zmiennaCzestotliwosciGenerowaniaPasażerów;
