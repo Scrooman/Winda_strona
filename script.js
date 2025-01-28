@@ -219,7 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const zmiennaCzestotliwosciGenerowaniaPasażerów = data.zmiennaCzestotliwosciGenerowaniaPasażerów;
                 aktualizujWyswietlaczeStatusSymulacji(data)
                 aktualizujSuwakCzestotliosci(data); 
-                return statusSymulacji;
             })
             .catch(error => {
                 console.error('Błąd podczas pobierania danych z serwera:', error);
