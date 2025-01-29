@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const floorHeight = shaftHeight / floors; // Wysokość jednego piętra
     let currentPosition = 0; // Obecne piętro windy
     let lokalnePolecenieWindy = null; // Zmienna do przechowywania lokalnej wartości poleceniaWindy[0]
+    let lokalnyStatusDrzwi = null; // Zmienna do przechowywania lokalnej wartości statusu pracy drzwi
+    let czyWyswietlonoAnimacjeWyjscia = null
+    let czyWyswietlonoAnimacjeWejscia = null
 
     if (window.location.pathname.endsWith('symulacja_wlasciwosci.html')) {
         const toggleSimulationButton = document.getElementById('toggle-simulation');
@@ -180,9 +183,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    function aktualizujGrafike(lokalizacjaWindy) {
+    function aktualizujGrafike(data) {
         // Pobierz wszystkie elementy z klasą 'pasazerowie'
         const pasazerowieElements = document.querySelectorAll('.pasazerowie');
+        const lokalizacjaWindy = data.windy_data.lokalizacjaWindy;
+        const statusPracaDrzwi = data.windy_data.pracaDrzwiWindy;
     
         pasazerowieElements.forEach(element => {
             // Pobierz ID elementu i wyciągnij ostatni znak
@@ -197,6 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const img = element.querySelector('img');
                     // Wyświetl grafikę
                     img.style.display = 'block';
+                    czyWyswietlonoAnimacjeWyjscia = true
                     // Dodaj nasłuchiwanie na zakończenie animacji
                     img.addEventListener('animationend', () => {
                         img.style.display = 'none';
@@ -215,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 const nowePolecenieWindy = data.windy_data.polecenia[0]; // Pobierz wartość poleceniaWindy[0] z serwera
-                
+                const nowyStatusDrzwi = data.windy_data.pracaDrzwiWindy; // Pobierz wartość poleceniaWindy[0] z serwera                }                
                 // Sprawdź, czy wartość poleceniaWindy[0] z serwera jest inna niż lokalna wartość
                 if (nowePolecenieWindy !== lokalnePolecenieWindy && data.dane_symulacji.wydarzenieStatusSymulacji === true) {
                     lokalnePolecenieWindy = nowePolecenieWindy; // Zaktualizuj lokalną wartość
@@ -223,6 +229,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         aktualizujRuchWindy(data); // Wykonaj funkcję aktualizujRuchWindy()
                     }
                 }
+
+                // Sprawdź, czy wartość statsu pracy drzwi z serwera jest inna niż lokalna wartość
+                if (nowyStatusDrzwi !== lokalnyStatusDrzwi && data.windy_data.pracaDrzwiWindy === true) {
+                    if (window.location.pathname.endsWith('index.html')) {
+                        aktualizujGrafike(data);
+                        czyWyswietlonoAnimacjeWyjscia = false
+                    }
+                }
+                if (lokalnyStatusDrzwi !== nowyStatusDrzwi) {
+                    lokalnyStatusDrzwi = nowyStatusDrzwi;
+                }   
                 aktualizujWyswietlacze(data);             
             })
             .catch(error => {
@@ -264,5 +281,5 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(pobierzStatusWindy, 1000);
     setInterval(pobierzStatystykiWindy, 1000);
     setInterval(pobierzStatusSymulacji, 60000);
-    setInterval(() => aktualizujGrafike(0), 3000);
+    // setInterval(() => aktualizujGrafike(0), 3000);
 });
