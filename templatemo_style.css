@@ -11,6 +11,15 @@ CSS Credit: http://www.templatemo.com/
     }
 }
 
+@keyframes move-right-to-left {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
 
 body {
 	margin: 0;
@@ -136,12 +145,12 @@ body {
 	flex-direction: column-reverse;
 	justify-content: space-evenly;
 	margin: 0;
-	background-color: #8B0000;
-    color: #FF0000;
+	background-color: #707070;
+    color: #8B0000;
     font-family: "Helvetica", sans-serif;
     font-size: 12px;
     text-align: center;
-    border: 1px solid #000000;
+    border: 5px solid #8B0000;
     border-radius: 50%;
 	max-width: 25px;
 	max-height: 25px; 

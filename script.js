@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPosition = 0; // Obecne piętro windy
     let lokalnePolecenieWindy = null; // Zmienna do przechowywania lokalnej wartości poleceniaWindy[0]
     let lokalnyStatusDrzwi = null; // Zmienna do przechowywania lokalnej wartości statusu pracy drzwi
+    let lokalnyRuchWindy = null; // Zmienna do przechowywania lokalnej wartości ruchu windy
     let czyWyswietlonoAnimacjeWyjscia = null
     let czyWyswietlonoAnimacjeWejscia = null
 
@@ -112,6 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
             elevator.style.transition = `transform ${travelTime}ms ease-in-out`;
             elevator.style.transform = `translateY(-${celRuchuWindy * floorHeight}px)`;
         }, 50);
+        setTimeout(() => {
+            animacjaWToku = false;
+        }, travelTime + 50);
     }
     
     // Funkcja do aktualizacji wyświetlaczy
@@ -187,7 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Pobierz wszystkie elementy z klasą 'pasazerowie'
         const pasazerowieElements = document.querySelectorAll('.pasazerowie');
         const lokalizacjaWindy = data.windy_data.lokalizacjaWindy;
-        const statusPracaDrzwi = data.windy_data.pracaDrzwiWindy;
     
         pasazerowieElements.forEach(element => {
             // Pobierz ID elementu i wyciągnij ostatni znak
@@ -200,12 +203,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Sprawdź, czy lokalizacjaWindy jest równa wartości z końca nazwy ID
                 if (parseInt(idNumber) === lokalizacjaWindy) {
                     const img = element.querySelector('img');
-                    // Wyświetl grafikę
+                    // Wyświetl pierwszy obrazek
+                    img.src = 'images/walk.gif';
                     img.style.display = 'block';
-                    czyWyswietlonoAnimacjeWyjscia = true
-                    // Dodaj nasłuchiwanie na zakończenie animacji
+                    img.style.animation = 'move-left-to-right 1s linear';
+                    // Dodaj nasłuchiwanie na zakończenie animacji pierwszego obrazka
                     img.addEventListener('animationend', () => {
+                        // Ukryj pierwszy obrazek
                         img.style.display = 'none';
+                        // Dodaj 1-sekundową przerwę
+                        setTimeout(() => {
+                            // Zmień źródło na drugi obrazek
+                            img.src = 'images/walk-left.gif';
+                            // Wyświetl drugi obrazek
+                            img.style.display = 'block';
+                            img.style.animation = 'move-right-to-left 1s linear';
+                            // Dodaj nasłuchiwanie na zakończenie animacji drugiego obrazka
+                            img.addEventListener('animationend', () => {
+                                // Ukryj drugi obrazek
+                                img.style.display = 'none';
+                            }, { once: true });
+                        }, 1000); // 1-sekundowa przerwa
                     }, { once: true });
                 } else {
                     // Ukryj grafikę
@@ -215,20 +233,63 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function aktualizujGrafikePaneluPietra(data) {
+        // Pobierz wszystkie elementy z klasą 'przyciski-sekcja'
+        const przyciskiSekcjaElements = document.querySelectorAll('.przyciski-sekcja');
+        const slownik = data.wybrane_przyciski ? data.wybrane_przyciski.słownik : {};
+    
+        if (!slownik) {
+            console.error('Slownik is undefined');
+            return;
+        }
+    
+        przyciskiSekcjaElements.forEach(element => {
+            // Pobierz ID elementu i wyciągnij ostatni znak
+            const id = element.id;
+            const match = id.match(/\d+$/);
+            
+            if (match) {
+                const idNumber = match[0]; // Pobierz wartość jako string
+                const img = element.querySelector('img');
+    
+                // Sprawdź, czy idNumber jest w słowniku
+                if (slownik.hasOwnProperty(idNumber)) {
+                    // Wyświetl odpowiednią grafikę na podstawie wartości w słowniku
+                    if (slownik[idNumber] === 2) {
+                        img.src = 'images/panel-pietra-gora.png';
+                    } else if (slownik[idNumber] === 3) {
+                        img.src = 'images/panel-pietra-dol.png';
+                    } else if (slownik[idNumber] === 1) {
+                        img.src = 'images/panel-pietra.png';
+                    }
+                } else {
+                    // Wyświetl obrazek panel-pietra.png, jeśli idNumber nie jest w słowniku
+                    img.src = 'images/panel-pietra.png';
+                }
+                img.style.display = 'block';
+            }
+        });
+    }
+
+
     // Funkcja do pobierania danych z serwera
     function pobierzStatusWindy() {
         fetch('https://winda.onrender.com/get_winda_status')
             .then(response => response.json())
             .then(data => {
-                const nowePolecenieWindy = data.windy_data.polecenia[0]; // Pobierz wartość poleceniaWindy[0] z serwera
-                const nowyStatusDrzwi = data.windy_data.pracaDrzwiWindy; // Pobierz wartość poleceniaWindy[0] z serwera                }                
-                // Sprawdź, czy wartość poleceniaWindy[0] z serwera jest inna niż lokalna wartość
-                if (nowePolecenieWindy !== lokalnePolecenieWindy && data.dane_symulacji.wydarzenieStatusSymulacji === true) {
-                    lokalnePolecenieWindy = nowePolecenieWindy; // Zaktualizuj lokalną wartość
+                const nowePolecenieWindy = data.windy_data.polecenia[0]; 
+                const nowyStatusDrzwi = data.windy_data.pracaDrzwiWindy;                 
+                
+                if (data.windy_data.ruchWindy === true && lokalnyRuchWindy === false && !animacjaWToku) {
+                    lokalnyRuchWindy = true;
+                    animacjaWToku = true;
                     if (window.location.pathname.endsWith('index.html')) {
                         aktualizujRuchWindy(data); // Wykonaj funkcję aktualizujRuchWindy()
                     }
-                }
+                } else if (data.windy_data.ruchWindy === false) {
+                    lokalnyRuchWindy = false;
+                    animacjaWToku = false; 
+                    }
 
                 // Sprawdź, czy wartość statsu pracy drzwi z serwera jest inna niż lokalna wartość
                 if (nowyStatusDrzwi !== lokalnyStatusDrzwi && data.windy_data.pracaDrzwiWindy === true) {
@@ -240,7 +301,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (lokalnyStatusDrzwi !== nowyStatusDrzwi) {
                     lokalnyStatusDrzwi = nowyStatusDrzwi;
                 }   
-                aktualizujWyswietlacze(data);             
+                aktualizujWyswietlacze(data);   
+                aktualizujGrafikePaneluPietra(data)          
             })
             .catch(error => {
                 console.error('Błąd podczas pobierania danych z serwera:', error);
