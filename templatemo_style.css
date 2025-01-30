@@ -78,7 +78,7 @@ body {
     border: 1px solid #ccc; /* Obramowanie */
     border-radius: 5px; /* Zaokrąglenie rogów */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Cień */
-    width: 100%; /* Szerokość elementu */
+	/*width: 100%;  Szerokość elementu */
     max-width: 600px; /* Maksymalna szerokość elementu */
 }
 
@@ -217,27 +217,27 @@ body {
 
 .wyswietlacz-wartosci {
     width: 100px;
-    height: 50px;
-    background-color: #ffffff;
+    height: 25px;
+    background-color: #f0f0f0;
     color: #000000;
     font-family: "Helvetica", sans-serif;
     font-size: 24px;
     text-align: center;
-    line-height: 50px;
-    border: 2px solid #000;
+    line-height: 25px;
+    border: 1px solid #000;
     border-radius: 5px;
 }
 
 .wyswietlacz-wartosci-tekstowych {
     width: 100px;
-    height: 50px;
-    background-color: #ffffff;
+    height: 25px;
+    background-color: #f0f0f0;
     color: #000000;
     font-family: "Helvetica", sans-serif;
     font-size: 12px;
     text-align: center;
-    line-height: 50px;
-    border: 2px solid #000;
+    line-height: 25px;
+    border: 1px solid #000;
     border-radius: 5px;
 }
 
