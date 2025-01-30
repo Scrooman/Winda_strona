@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const wyswietlaczStatusDrzwi = document.getElementById('wyswietlacz-wartosci-status-drzwi');
     const wyswietlaczTrybPracy = document.getElementById('wyswietlacz-wartosci-tryb-pracy');
     const wyswietlaczObciazenie = document.getElementById('wyswietlacz-wartosci-obciazenie');
-    const wyswietlaczPredkoscWindy = document.getElementById('wyswietlacz-wartosci-predkosc');
+    const wyswietlaczPredkoscWindy = document.getElementById('wyswietlacz-wartosci-predkosc-windy');
     const wyswietlaczIndeksZuzycia = document.getElementById('wyswietlacz-wartosci-indeks-zuzycia');
     const wyswietlaczOstatniSerwis = document.getElementById('wyswietlacz-wartosci-ostatni-serwis');
 
