@@ -359,7 +359,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     lokalnyStatusDrzwi = nowyStatusDrzwi;
                 }   
                 aktualizujWyswietlacze(data);   
-                aktualizujGrafikePaneluPietra(data)          
+                aktualizujGrafikePaneluPietra(data)
+                aktualizujWyswietlaczeStatusuWindy(data);          
             })
             .catch(error => {
                 console.error('Błąd podczas pobierania danych z serwera:', error);
@@ -384,7 +385,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const zmiennaCzestotliwosciGenerowaniaPasażerów = data.zmiennaCzestotliwosciGenerowaniaPasażerów;
                 aktualizujWyswietlaczeStatusSymulacji(data)
                 aktualizujSuwakCzestotliosci(data); 
-                aktualizujWyswietlaczeStatusuWindy(data);
                 return statusSymulacji;
             })
             .catch(error => {
