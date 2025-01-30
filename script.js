@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const wyswietlaczWartosciStatusSymulacji = document.getElementById('wyswietlacz-wartosci-status-symulacji')
     const suwakCzestotliwosciGenerowania = document.getElementById('suwak-czestotliwosci-generowania');
     const suwakCzestotliwosciGenerowaniaWartosc = document.getElementById('suwak-czestotliwosci-generowania-wartosc');
+    const wyswietlaczStatusWindy = document.getElementById('wyswietlacz-wartosci-status-windy');
+    const wyswietlaczStatusDrzwi = document.getElementById('wyswietlacz-wartosci-status-drzwi');
+    const wyswietlaczTrybPracy = document.getElementById('wyswietlacz-wartosci-tryb-pracy');
+    const wyswietlaczObciazenie = document.getElementById('wyswietlacz-wartosci-obciazenie');
+    const wyswietlaczPredkoscWindy = document.getElementById('wyswietlacz-wartosci-predkosc');
+    const wyswietlaczIndeksZuzycia = document.getElementById('wyswietlacz-wartosci-indeks-zuzycia');
+    const wyswietlaczOstatniSerwis = document.getElementById('wyswietlacz-wartosci-ostatni-serwis');
+
     const elevator = document.getElementById('elevator');
     const shaftHeight = 1100; // Wysokość szybu
     const floors = 11; // Liczba pięter
@@ -87,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicjalizacja windy
     window.moveElevator = function(targetFloor) {
         const floorsToTravel = Math.abs(targetFloor - currentPosition);
-        const travelTime = floorsToTravel * 2000; // Czas przejazdu (2 sekunda na piętro)
+        const travelTime = floorsToTravel * 5000; // Czas przejazdu (5 sekunda na piętro)
 
         elevator.style.transition = `transform ${travelTime}ms ease-in-out`;
         elevator.style.transform = `translateY(-${targetFloor * floorHeight}px)`;
@@ -106,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Aktualizacja pozycji windy
         const floorsToTravel = Math.abs(celRuchuWindy - piętroStartuRuchuWindy);
-        const travelTime = floorsToTravel * 2000; // Czas przejazdu (2 sekunda na piętro)
+        const travelTime = floorsToTravel * 5000; // Czas przejazdu (5 sekunda na piętro)
 
         // Dodanie opóźnienia, aby animacja była widoczna
         setTimeout(() => {
@@ -142,6 +150,56 @@ document.addEventListener('DOMContentLoaded', () => {
         //if (wyswietlaczPracyDrzwi) {
         //    wyswietlaczPracyDrzwi.textContent = data.windy_data.polecenia; // Zakładam, że polecenia zawiera status drzwi
         //}
+    }
+
+    function aktualizujWyswietlaczeStatusuWindy(data) {
+        const statusWindy = data.windy_data.statusWindy;
+        const statusDrzwi = data.windy_data.statusDrzwi;
+        const trybPracy = data.windy_data.trybPracy;
+        const obciazenie = data.windy_data.obciazenie;
+        const predkoscWindy = data.windy_data.predkoscWindy;
+        const indeksZuzycia = data.windy_data.indeksZuzycia;
+        const ostatniSerwis = data.windy_data.ostatniSerwis;
+
+        if (statusWindy === 1) {
+            wyswietlaczStatusWindySymbol = 'Aktywna';
+        } else if (statusWindy === 0) {
+            wyswietlaczStatusWindySymbol = 'Nieaktywna';
+        }
+        if (wyswietlaczStatusWindy) {
+            wyswietlaczStatusWindy.textContent = wyswietlaczStatusWindySymbol;
+        }
+
+        if (statusDrzwi === 1) {
+            wyswietlaczStatusDrzwiSymbol = 'Aktywne';
+        } else if (statusDrzwi === 0) {
+            wyswietlaczStatusDrzwiSymbol = 'Nieaktywne';
+        }
+        if (wyswietlaczStatusDrzwi) {
+            wyswietlaczStatusDrzwi.textContent = wyswietlaczStatusDrzwiSymbol;
+        }
+
+        if (trybPracy === 1) {
+            wyswietlaczTrybPracySymbol = 'Standardowy';
+        } else if (trybPracy === 0) {
+            wyswietlaczTrybPracySymbol = 'Awaryjny';
+        }
+        if (wyswietlaczTrybPracy) {
+            wyswietlaczTrybPracy.textContent = wyswietlaczTrybPracySymbol;
+        }
+        
+        if (wyswietlaczObciazenie) {
+            wyswietlaczObciazenie.textContent = `${parseFloat(obciazenie).toFixed(2)} /000 kg`;
+        }
+        if (wyswietlaczPredkoscWindy) {
+            wyswietlaczPredkoscWindy.textContent = `${parseFloat(predkoscWindy).toFixed(2)} m/s`;
+        }
+        if (wyswietlaczIndeksZuzycia) {
+            wyswietlaczIndeksZuzycia.textContent = parseFloat(indeksZuzycia).toFixed(2);
+        }
+        if (wyswietlaczOstatniSerwis) {
+            wyswietlaczOstatniSerwis.textContent = ostatniSerwis;
+        }
     }
 
     function aktualizujWyswietlaczeStatystykiWindy(data) {
@@ -206,24 +264,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Wyświetl pierwszy obrazek
                     img.src = 'images/walk.gif';
                     img.style.display = 'block';
-                    img.style.animation = 'move-left-to-right 1s linear';
+                    img.style.animation = 'move-left-to-right 2s linear';
                     // Dodaj nasłuchiwanie na zakończenie animacji pierwszego obrazka
                     img.addEventListener('animationend', () => {
                         // Ukryj pierwszy obrazek
                         img.style.display = 'none';
-                        // Dodaj 1-sekundową przerwę
                         setTimeout(() => {
                             // Zmień źródło na drugi obrazek
                             img.src = 'images/walk-left.gif';
                             // Wyświetl drugi obrazek
                             img.style.display = 'block';
-                            img.style.animation = 'move-right-to-left 1s linear';
+                            img.style.animation = 'move-right-to-left 2s linear';
                             // Dodaj nasłuchiwanie na zakończenie animacji drugiego obrazka
                             img.addEventListener('animationend', () => {
                                 // Ukryj drugi obrazek
                                 img.style.display = 'none';
                             }, { once: true });
-                        }, 1000); // 1-sekundowa przerwa
+                        }, 500); // 0,5-sekundowa przerwa
                     }, { once: true });
                 } else {
                     // Ukryj grafikę
@@ -327,6 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const zmiennaCzestotliwosciGenerowaniaPasażerów = data.zmiennaCzestotliwosciGenerowaniaPasażerów;
                 aktualizujWyswietlaczeStatusSymulacji(data)
                 aktualizujSuwakCzestotliosci(data); 
+                aktualizujWyswietlaczeStatusuWindy(data);
                 return statusSymulacji;
             })
             .catch(error => {
