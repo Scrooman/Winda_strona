@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
             wyswietlaczWartosciPokonanePietra.textContent = pokonanePietra;
         }
         if (wyswietlaczWartosciPrzebytaOdleglosc) {
-            wyswietlaczWartosciPrzebytaOdleglosc.textContent = przebytaOdleglosc;
+            wyswietlaczWartosciPrzebytaOdleglosc.textContent = `${parseFloat(przebytaOdleglosc).toFixed(2)} km`;
         }
         if (wyswietlaczWartosciPrzystanki) {
             wyswietlaczWartosciPrzystanki.textContent = przystanki;

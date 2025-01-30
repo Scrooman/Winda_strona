@@ -216,27 +216,25 @@ body {
 }
 
 .wyswietlacz-wartosci {
-    width: 100px;
-    height: 25px;
+    width: 125px;
+    height: 30px;
     background-color: #f0f0f0;
     color: #000000;
-    font-family: "Helvetica", sans-serif;
-    font-size: 24px;
+    font-size: 16px;
     text-align: center;
-    line-height: 25px;
+    line-height: 30px;
     border: 1px solid #000;
     border-radius: 5px;
 }
 
 .wyswietlacz-wartosci-tekstowych {
-    width: 100px;
-    height: 25px;
+    width: 125px;
+    height: 30px;
     background-color: #f0f0f0;
     color: #000000;
-    font-family: "Helvetica", sans-serif;
-    font-size: 12px;
+    font-size: 16px;
     text-align: center;
-    line-height: 25px;
+    line-height: 30px;
     border: 1px solid #000;
     border-radius: 5px;
 }
