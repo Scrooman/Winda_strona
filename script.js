@@ -244,6 +244,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+/*
+    function aktualizujWyswietlaczePasazerowNaPietrze(data) {
+        const pokonanePietra = data.pokonane_pietra;
+        const przebytaOdleglosc = data.przebyta_odleglosc;
+        const przystanki = data.zaliczone_przystanki;
+        
+        // Pobierz wszystkie elementy z klasą 'pasazerowie'
+        const liczbaPasazerowElements = document.querySelectorAll('.liczba-pasazerow');
+        const pietraZWezwaniami = data.windy_data.lokalizacjaWindy;
+    
+        pasazerowieElements.forEach(element => {
+            // Pobierz ID elementu i wyciągnij ostatni znak
+            const id = element.id;
+            const match = id.match(/\d+$/);
+            
+            if (match) {
+                const idNumber = match[0];
+
+                if (parseInt(idNumber) === lokalizacjaWindy) {
+    
+        if (wyswietlaczWartosciPokonanePietra) {
+            wyswietlaczWartosciPokonanePietra.textContent = pokonanePietra;
+        } 
+            */
 
     function aktualizujGrafike(data) {
         // Pobierz wszystkie elementy z klasą 'pasazerowie'

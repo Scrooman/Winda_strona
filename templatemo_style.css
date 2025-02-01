@@ -137,6 +137,9 @@ body {
 	animation: move-left-to-right 1s linear; /* Dodanie animacji */
 }
 
+.liczba-pasazerow {
+	font-family: "Helvetica", sans-serif;
+}
 
 .wyswietlacz-do-gory {
 	position: relative;
