@@ -297,20 +297,24 @@ document.addEventListener('DOMContentLoaded', () => {
                             const rodzajePasazerow = pasazer.rodzaje_pasazerow;
 
                             // Funkcja do dodawania obrazków
-                            const dodajObrazek = (typ, element) => {
-                                if (!element.querySelector(`img.${typ}`) && rodzajePasazerow[typ].length > 0) {
+                            const dodajObrazki = (typ, element) => {
+                                // Usuń istniejące obrazki tego typu
+                                element.querySelectorAll(`img.${typ}`).forEach(img => img.remove());
+
+                                // Dodaj nowe obrazki
+                                rodzajePasazerow[typ].forEach(wartosc => {
                                     const img = document.createElement('img');
-                                    img.src = `images/${rodzajePasazerow[typ][0]}.png`;
+                                    img.src = `images/${wartosc}.png`;
                                     img.alt = 'Pasażer';
                                     img.classList.add(typ); // Dodaj klasę, aby można było łatwo znaleźć obrazek
                                     element.appendChild(img);
-                                }
+                                });
                             };
 
                             // Dodaj obrazki dla każdego typu pasażera
-                            dodajObrazek('normalny', element);
-                            dodajObrazek('unikalny', element);
-                            dodajObrazek('legendarny', element);
+                            dodajObrazki('normalny', element);
+                            dodajObrazki('unikalny', element);
+                            dodajObrazki('legendarny', element);
 
                             break; // Przerwij pętlę, jeśli znaleziono pasujący element
                         }
@@ -320,10 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Usuń obrazki, jeśli nie znaleziono pasującego elementu
                 if (!found) {
                     ['normalny', 'unikalny', 'legendarny'].forEach(typ => {
-                        const img = element.querySelector(`img.${typ}`);
-                        if (img) {
-                            element.removeChild(img);
-                        }
+                        element.querySelectorAll(`img.${typ}`).forEach(img => img.remove());
                     });
                 }
             }
