@@ -283,6 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (match) {
                 const idNumber = match[0];
+                let found = false;
 
                 // Przejdź przez wszystkie klucze w słowniku
                 for (const key in slownik) {
@@ -292,12 +293,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // Sprawdź, czy idNumber jest takie samo jak zrodlo
                         if (parseInt(idNumber) === parseInt(zrodlo)) {
-                            // Dodaj grafikę do elementu
-                            const img = document.createElement('img');
-                            img.src = 'images/1.png';
-                            img.alt = 'Pasażer';
-                            element.appendChild(img);
+                            found = true;
+                            // Sprawdź, czy obrazek już istnieje
+                            if (!element.querySelector('img')) {
+                                // Dodaj grafikę do elementu
+                                const img = document.createElement('img');
+                                img.src = 'images/1.png';
+                                img.alt = 'Pasażer';
+                                element.appendChild(img);
+                            }
+                            break; // Przerwij pętlę, jeśli znaleziono pasujący element
                         }
+                    }
+                }
+
+                // Usuń obrazek, jeśli nie znaleziono pasującego elementu
+                if (!found) {
+                    const img = element.querySelector('img');
+                    if (img) {
+                        element.removeChild(img);
                     }
                 }
             }
