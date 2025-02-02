@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function aktualizujWyswietlaczePasazerowNaPietrze(data) {
         // Pobierz wszystkie elementy z klasą 'oczekujacy-pasazerowie'
         const oczekujacy_pasazerowieElements = document.querySelectorAll('.oczekujacy-pasazerowie');
-        const slownik = data.zawartosc_pieter.wiezieni_pasazerowie;
+        const slownik = data.zawartosc_pieter.oczekujacy_pasazerowie;
 
         if (!slownik) {
             console.error('Slownik is undefined');
