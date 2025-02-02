@@ -244,17 +244,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-/*
+ /*
     function aktualizujWyswietlaczePasazerowNaPietrze(data) {
-        const pokonanePietra = data.pokonane_pietra;
-        const przebytaOdleglosc = data.przebyta_odleglosc;
-        const przystanki = data.zaliczone_przystanki;
-        
-        // Pobierz wszystkie elementy z klasą 'pasazerowie'
-        const liczbaPasazerowElements = document.querySelectorAll('.liczba-pasazerow');
-        const pietraZWezwaniami = data.windy_data.lokalizacjaWindy;
+       
+        // Pobierz wszystkie elementy z klasą 'oczekujacy-pasazerowie'
+        const oczekujacy_pasazerowieElements = document.querySelectorAll('.oczekujacy-pasazerowie');
+        const slownik = data.zawartosc_pieter['oczekujacyPasazerowie'];
     
-        pasazerowieElements.forEach(element => {
+        if (!slownik) {
+            console.error('Slownik is undefined');
+            return;
+        }
+        data.zawartosc_pieter['oczekujacyPasazerowie'][key]['zrodlo']
+        oczekujacy_pasazerowieElements.forEach(element => {
             // Pobierz ID elementu i wyciągnij ostatni znak
             const id = element.id;
             const match = id.match(/\d+$/);
@@ -263,11 +265,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 const idNumber = match[0];
 
                 if (parseInt(idNumber) === lokalizacjaWindy) {
-    
-        if (wyswietlaczWartosciPokonanePietra) {
-            wyswietlaczWartosciPokonanePietra.textContent = pokonanePietra;
-        } 
-            */
+*/
+    function aktualizujWyswietlaczePasazerowNaPietrze(data) {
+        // Pobierz wszystkie elementy z klasą 'oczekujacy-pasazerowie'
+        const oczekujacy_pasazerowieElements = document.querySelectorAll('.oczekujacy-pasazerowie');
+        const slownik = data.zawartosc_pieter['oczekujacyPasazerowie'];
+
+        if (!slownik) {
+            console.error('Slownik is undefined');
+            return;
+        }
+
+        oczekujacy_pasazerowieElements.forEach(element => {
+            // Pobierz ID elementu i wyciągnij ostatni znak
+            const id = element.id;
+            const match = id.match(/\d+$/);
+
+            if (match) {
+                const idNumber = match[0];
+
+                // Przejdź przez wszystkie klucze w słowniku
+                for (const key in slownik) {
+                    if (slownik.hasOwnProperty(key)) {
+                        const pasazer = slownik[key];
+                        const zrodlo = pasazer['zrodlo'];
+
+                        // Sprawdź, czy idNumber jest takie samo jak zrodlo
+                        if (parseInt(idNumber) === parseInt(zrodlo)) {
+                            // Dodaj grafikę do elementu
+                            const img = document.createElement('img');
+                            img.src = 'images/1.png';
+                            img.alt = 'Pasażer';
+                            element.appendChild(img);
+                        }
+                    }
+                }
+            }
+        });
+    }
+            
 
     function aktualizujGrafike(data) {
         // Pobierz wszystkie elementy z klasą 'pasazerowie'
@@ -384,7 +420,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }   
                 aktualizujWyswietlacze(data);   
                 aktualizujGrafikePaneluPietra(data)
-                aktualizujWyswietlaczeStatusuWindy(data);          
+                aktualizujWyswietlaczeStatusuWindy(data);
+                aktualizujWyswietlaczePasazerowNaPietrze(data)          
             })
             .catch(error => {
                 console.error('Błąd podczas pobierania danych z serwera:', error);
