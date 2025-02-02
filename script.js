@@ -294,11 +294,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Sprawdź, czy idNumber jest takie samo jak zrodlo
                         if (parseInt(idNumber) === parseInt(zrodlo)) {
                             found = true;
+                            const normalny = pasazer.rodzaje_pasazerow.normalny;
+
                             // Sprawdź, czy obrazek już istnieje
-                            if (!element.querySelector('img')) {
+                            if (!element.querySelector('img') && normalny.length > 0) {
                                 // Dodaj grafikę do elementu
                                 const img = document.createElement('img');
-                                img.src = 'images/1.png';
+                                img.src = `images/${normalny[0]}.png`;
                                 img.alt = 'Pasażer';
                                 element.appendChild(img);
                             }
