@@ -294,27 +294,37 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Sprawdź, czy idNumber jest takie samo jak zrodlo
                         if (parseInt(idNumber) === parseInt(zrodlo)) {
                             found = true;
-                            const normalny = pasazer.rodzaje_pasazerow.normalny;
+                            const rodzajePasazerow = pasazer.rodzaje_pasazerow;
 
-                            // Sprawdź, czy obrazek już istnieje
-                            if (!element.querySelector('img') && normalny.length > 0) {
-                                // Dodaj grafikę do elementu
-                                const img = document.createElement('img');
-                                img.src = `images/${normalny[0]}.png`;
-                                img.alt = 'Pasażer';
-                                element.appendChild(img);
-                            }
+                            // Funkcja do dodawania obrazków
+                            const dodajObrazek = (typ, element) => {
+                                if (!element.querySelector(`img.${typ}`) && rodzajePasazerow[typ].length > 0) {
+                                    const img = document.createElement('img');
+                                    img.src = `images/${rodzajePasazerow[typ][0]}.png`;
+                                    img.alt = 'Pasażer';
+                                    img.classList.add(typ); // Dodaj klasę, aby można było łatwo znaleźć obrazek
+                                    element.appendChild(img);
+                                }
+                            };
+
+                            // Dodaj obrazki dla każdego typu pasażera
+                            dodajObrazek('normalny', element);
+                            dodajObrazek('unikalny', element);
+                            dodajObrazek('legendarny', element);
+
                             break; // Przerwij pętlę, jeśli znaleziono pasujący element
                         }
                     }
                 }
 
-                // Usuń obrazek, jeśli nie znaleziono pasującego elementu
+                // Usuń obrazki, jeśli nie znaleziono pasującego elementu
                 if (!found) {
-                    const img = element.querySelector('img');
-                    if (img) {
-                        element.removeChild(img);
-                    }
+                    ['normalny', 'unikalny', 'legendarny'].forEach(typ => {
+                        const img = element.querySelector(`img.${typ}`);
+                        if (img) {
+                            element.removeChild(img);
+                        }
+                    });
                 }
             }
         });
