@@ -118,7 +118,7 @@ body {
     border-radius: 2px;
 }
 
-.pasazerowie {
+.wejscie-do-windy {
 	position: relative;
 	overflow: hidden;
 	background: #ffffff;
@@ -130,7 +130,7 @@ body {
 	height: calc(1100px / 11);
 }
 
-.pasazerowie img {
+.wejscie-do-windy img {
     width: 45px; /* Dopasowanie szerokości grafiki do szerokości kontenera */
     height: 85px; /* Automatyczne dostosowanie wysokości grafiki */
     display: none; /* Domyślnie ukryj grafikę */

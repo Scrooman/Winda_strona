@@ -271,10 +271,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function aktualizujGrafike(data) {
         // Pobierz wszystkie elementy z klasą 'pasazerowie'
-        const pasazerowieElements = document.querySelectorAll('.pasazerowie');
+        const wejscie_do_windyElements = document.querySelectorAll('.wejscie-do-windy');
         const lokalizacjaWindy = data.windy_data.lokalizacjaWindy;
     
-        pasazerowieElements.forEach(element => {
+        wejscie_do_windyElements.forEach(element => {
             // Pobierz ID elementu i wyciągnij ostatni znak
             const id = element.id;
             const match = id.match(/\d+$/);
