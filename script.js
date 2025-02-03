@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const wyswietlaczPredkoscWindy = document.getElementById('wyswietlacz-wartosci-predkosc-windy');
     const wyswietlaczIndeksZuzycia = document.getElementById('wyswietlacz-wartosci-indeks-zuzycia');
     const wyswietlaczOstatniSerwis = document.getElementById('wyswietlacz-wartosci-ostatni-serwis');
-    const wyswietlaczPasazerowTyp1 = document.getElementById('wyswietlacz-wartosci-pasazerow-typ1');
-    const wyswietlaczPasazerowTyp2 = document.getElementById('wyswietlacz-wartosci-pasazerow-typ2');
-    const wyswietlaczPasazerowTyp3 = document.getElementById('wyswietlacz-wartosci-pasazerow-typ3');
+    const wyswietlaczPasazerowTyp1 = document.getElementById('wyswietlacz-wartosci-pasazerow-pasazerow1');
+    const wyswietlaczPasazerowTyp2 = document.getElementById('wyswietlacz-wartosci-pasazerow-pasazerow2');
+    const wyswietlaczPasazerowTyp3 = document.getElementById('wyswietlacz-wartosci-pasazerow-pasazerow3');
 
     const elevator = document.getElementById('elevator');
     const shaftHeight = 1100; // Wysokość szybu
