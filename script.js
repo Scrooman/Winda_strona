@@ -240,8 +240,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (wyswietlaczPasazerowTyp3) {
             wyswietlaczPasazerowTyp3.textContent = przewiezieniPasazerowieTyp3;
         }
-        if (przewiezieniPasazerowieWszystko) {
-            przewiezieniPasazerowieWszystko.textContent = przewiezieniPasazerowieWszystko;
+        if (wyswietlaczPasazerowWszystko) {
+            wyswietlaczPasazerowWszystko.textContent = przewiezieniPasazerowieWszystko;
         }
     }
 
