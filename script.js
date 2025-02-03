@@ -15,9 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const wyswietlaczPredkoscWindy = document.getElementById('wyswietlacz-wartosci-predkosc-windy');
     const wyswietlaczIndeksZuzycia = document.getElementById('wyswietlacz-wartosci-indeks-zuzycia');
     const wyswietlaczOstatniSerwis = document.getElementById('wyswietlacz-wartosci-ostatni-serwis');
-    const wyswietlaczPasazerowTyp1 = document.getElementById('wyswietlacz-wartosci-pasazerow-pasazerow1');
-    const wyswietlaczPasazerowTyp2 = document.getElementById('wyswietlacz-wartosci-pasazerow-pasazerow2');
-    const wyswietlaczPasazerowTyp3 = document.getElementById('wyswietlacz-wartosci-pasazerow-pasazerow3');
+    const wyswietlaczPasazerowTyp1 = document.getElementById('wyswietlacz-wartosci-pasazerow1');
+    const wyswietlaczPasazerowTyp2 = document.getElementById('wyswietlacz-wartosci-pasazerow2');
+    const wyswietlaczPasazerowTyp3 = document.getElementById('wyswietlacz-wartosci-pasazerow3');
+    const wyswietlaczPasazerowWszystko = document.getElementById('wyswietlacz-wartosci-pasazerow4');
 
     const elevator = document.getElementById('elevator');
     const shaftHeight = 1100; // Wysokość szybu
@@ -227,6 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const przewiezieniPasazerowieTyp1 = data.przewiezieni_pasazerowie.typ1;
         const przewiezieniPasazerowieTyp2 = data.przewiezieni_pasazerowie.typ2;
         const przewiezieniPasazerowieTyp3 = data.przewiezieni_pasazerowie.typ3;
+        const przewiezieniPasazerowieWszystko = data.przewiezieni_pasazerowie.typ1 + data.przewiezieni_pasazerowie.typ2 + data.przewiezieni_pasazerowie.typ3;
         
 
         if (wyswietlaczPasazerowTyp1) {
@@ -237,6 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (wyswietlaczPasazerowTyp3) {
             wyswietlaczPasazerowTyp3.textContent = przewiezieniPasazerowieTyp3;
+        }
+        if (przewiezieniPasazerowieWszystko) {
+            przewiezieniPasazerowieWszystko.textContent = przewiezieniPasazerowieWszystko;
         }
     }
 
