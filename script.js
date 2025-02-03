@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const wyswietlaczPredkoscWindy = document.getElementById('wyswietlacz-wartosci-predkosc-windy');
     const wyswietlaczIndeksZuzycia = document.getElementById('wyswietlacz-wartosci-indeks-zuzycia');
     const wyswietlaczOstatniSerwis = document.getElementById('wyswietlacz-wartosci-ostatni-serwis');
+    const wyswietlaczPasazerowTyp1 = document.getElementById('wyswietlacz-wartosci-pasazerow-typ1');
+    const wyswietlaczPasazerowTyp2 = document.getElementById('wyswietlacz-wartosci-pasazerow-typ2');
+    const wyswietlaczPasazerowTyp3 = document.getElementById('wyswietlacz-wartosci-pasazerow-typ3');
 
     const elevator = document.getElementById('elevator');
     const shaftHeight = 1100; // Wysokość szybu
@@ -219,6 +222,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+
+    function aktualizujWyswietlaczePasazerow(data) {
+        const przewiezieniPasazerowieTyp1 = data.przewiezieni_pasazerowie.typ1;
+        const przewiezieniPasazerowieTyp2 = data.przewiezieni_pasazerowie.typ2;
+        const przewiezieniPasazerowieTyp3 = data.przewiezieni_pasazerowie.typ3;
+        
+
+        if (wyswietlaczPasazerowTyp1) {
+            wyswietlaczPasazerowTyp1.textContent = przewiezieniPasazerowieTyp1;
+        }
+        if (wyswietlaczPasazerowTyp2) {
+            wyswietlaczPasazerowTyp2.textContent = przewiezieniPasazerowieTyp2;
+        }
+        if (wyswietlaczPasazerowTyp3) {
+            wyswietlaczPasazerowTyp3.textContent = przewiezieniPasazerowieTyp3;
+        }
+    }
+
     function aktualizujWyswietlaczeStatusSymulacji(data) {
         const statusSymulacji = data.statusSymulacji;
         if (statusSymulacji === 1) {
@@ -244,28 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
- /*
-    function aktualizujWyswietlaczePasazerowNaPietrze(data) {
-       
-        // Pobierz wszystkie elementy z klasą 'oczekujacy-pasazerowie'
-        const oczekujacy_pasazerowieElements = document.querySelectorAll('.oczekujacy-pasazerowie');
-        const slownik = data.zawartosc_pieter['oczekujacyPasazerowie'];
-    
-        if (!slownik) {
-            console.error('Slownik is undefined');
-            return;
-        }
-        data.zawartosc_pieter['oczekujacyPasazerowie'][key]['zrodlo']
-        oczekujacy_pasazerowieElements.forEach(element => {
-            // Pobierz ID elementu i wyciągnij ostatni znak
-            const id = element.id;
-            const match = id.match(/\d+$/);
-            
-            if (match) {
-                const idNumber = match[0];
 
-                if (parseInt(idNumber) === lokalizacjaWindy) {
-*/
     function aktualizujWyswietlaczePasazerowNaPietrze(data) {
         // Pobierz wszystkie elementy z klasą 'oczekujacy-pasazerowie'
         const oczekujacy_pasazerowieElements = document.querySelectorAll('.oczekujacy-pasazerowie');
@@ -461,6 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 aktualizujWyswietlaczeStatystykiWindy(data);
+                aktualizujWyswietlaczePasazerow(data)
             })
             .catch(error => console.error('Błąd podczas pobierania danych z serwera:', error));
     }
