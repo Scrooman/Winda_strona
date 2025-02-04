@@ -408,6 +408,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         img.src = 'images/panel-pietra-gora.png';
                     } else if (slownik[idNumber] === 3) {
                         img.src = 'images/panel-pietra-dol.png';
+                    } else if (slownik[idNumber] === 1) {
+                        pass
                     }
                 } else {
                     // Wyświetl obrazek panel-pietra.png, jeśli idNumber nie jest w słowniku
