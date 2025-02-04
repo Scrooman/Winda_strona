@@ -330,6 +330,7 @@ h1 {
 	justify-content: center;
 	align-items: center;
 	transition: transform 1s ease-in-out;
+	object-fit: cover; /* Możesz użyć 'contain' lub 'fill' w zależności od potrzeb */
 }
 
 .floor-labels {
