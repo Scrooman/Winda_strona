@@ -432,7 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (data.windy_data.ruchWindy === true && lokalnyRuchWindy === false && !animacjaWToku) {
                     lokalnyRuchWindy = true;
                     animacjaWToku = true;
-                    if (window.location.pathname.endsWith('/')) {
+                    if (window.location.pathname.endsWith('/') || window.location.pathname.endsWith('/index.html')) {
                         aktualizujRuchWindy(data); // Wykonaj funkcję aktualizujRuchWindy()
                     }
                 } else if (data.windy_data.ruchWindy === false) {
@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Sprawdź, czy wartość statsu pracy drzwi z serwera jest inna niż lokalna wartość
                 if (nowyStatusDrzwi !== lokalnyStatusDrzwi && data.windy_data.pracaDrzwiWindy === true) {
-                    if (window.location.pathname.endsWith('/')) {
+                    if (window.location.pathname.endsWith('/') || window.location.pathname.endsWith('/index.html')) {
                         aktualizujGrafike(data);
                         czyWyswietlonoAnimacjeWyjscia = false
                     }
