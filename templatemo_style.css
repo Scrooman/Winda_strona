@@ -107,12 +107,12 @@ body {
 .przyciski-sekcja {
 	position: relative;
 	overflow: hidden;
-	height: calc(1100px / 11);
+	height: 90px;
 	width: 30px;
 	background: #f0f0f0;
 	display: flex;
 	flex-direction: column-reverse;
-	justify-content: space-between;
+	justify-content: center;
 	margin: 0;
 	border: 2px solid #ccc;
     border-radius: 2px;
@@ -127,7 +127,7 @@ body {
 	justify-content: space-between;
 	margin: 0;
 	width: 170px;
-	height: calc(1100px / 11);
+	height: 90px;
 }
 
 .wejscie-do-windy img {
@@ -181,13 +181,14 @@ body {
     display: flex; /* Ustawia elementy wewnątrz w linii */
     align-items: center; /* Wyrównuje elementy wewnątrz w pionie */
     justify-content: center;
-    margin: 10px 0; /* Zewnętrzny odstęp */
+    margin: 0px; /* Zewnętrzny odstęp */
 	border-bottom: 1px solid #ccc;
 	border-top: 1px solid #ccc;
 	background-color: #f9f9f9; /* Kolor tła */
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Cień */
     width: 100%; /* Szerokość elementu */
     max-width: 600px; /* Maksymalna szerokość elementu */
+	height: 90px
 }
 
 .label {
