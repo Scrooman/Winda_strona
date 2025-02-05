@@ -495,5 +495,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(pobierzStatusWindy, 1000);
     setInterval(pobierzStatystykiWindy, 1000);
     setInterval(pobierzStatusSymulacji, 60000);
+    moveElevator(5)
     // setInterval(() => aktualizujGrafike(0), 3000);
 });
