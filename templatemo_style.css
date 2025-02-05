@@ -339,13 +339,23 @@ h1 {
     max-height: 100%; /* Upewnij się, że obraz nie przekracza wysokości elementu rodzica */
 }
 
-.floor-labels {
+.floor-labels-left {
 	display: flex;
 	flex-direction: column-reverse;
 	height: 1100px;
 	justify-content: space-between;
 	text-align: center;
 	margin: 0;
+}
+
+.floor-labels-right {
+	display: flex;
+	flex-direction: column-reverse;
+	height: 1100px;
+	justify-content: space-between;
+	text-align: center;
+	margin: 0;
+	width: 50px;
 }
 
 .floor-labels div {
