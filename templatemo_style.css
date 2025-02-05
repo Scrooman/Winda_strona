@@ -131,10 +131,8 @@ body {
 }
 
 .wejscie-do-windy img {
-	width: 100%;
-    height: 100%;
-    object-fit: cover; /* Możesz użyć 'contain' lub 'fill' w zależności od potrzeb */
-    max-height: 100%; /* Upewnij się, że obraz nie przekracza wysokości elementu rodzica */
+    width: 45px; /* Dopasowanie szerokości grafiki do szerokości kontenera */
+    height: 85px; /* Automatyczne dostosowanie wysokości grafiki */
     display: none; /* Domyślnie ukryj grafikę */
 	animation: move-left-to-right 1s linear; /* Dodanie animacji */
 }
