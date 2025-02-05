@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Sprawdź, czy wartość statsu pracy drzwi z serwera jest inna niż lokalna wartość
                 if (nowyStatusDrzwi !== lokalnyStatusDrzwi && data.windy_data.pracaDrzwiWindy === true) {
-                    if (window.location.pathname.endsWith('index.html')) {
+                    if (window.location.pathname.endsWith('/')) {
                         aktualizujGrafike(data);
                         czyWyswietlonoAnimacjeWyjscia = false
                     }
