@@ -432,7 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (data.windy_data.ruchWindy === true && lokalnyRuchWindy === false && !animacjaWToku) {
                     lokalnyRuchWindy = true;
                     animacjaWToku = true;
-                    if (window.location.pathname.endsWith('index.html')) {
+                    if (window.location.pathname.endsWith('/')) {
                         aktualizujRuchWindy(data); // Wykonaj funkcję aktualizujRuchWindy()
                     }
                 } else if (data.windy_data.ruchWindy === false) {
@@ -495,6 +495,5 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(pobierzStatusWindy, 1000);
     setInterval(pobierzStatystykiWindy, 1000);
     setInterval(pobierzStatusSymulacji, 60000);
-    moveElevator(5)
     // setInterval(() => aktualizujGrafike(0), 3000);
 });
