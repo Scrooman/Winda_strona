@@ -484,7 +484,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (lokalnyStatusDrzwi !== nowyStatusDrzwi) {
                     lokalnyStatusDrzwi = nowyStatusDrzwi;
                 }   
-                
                 aktualizujWyswietlacze(data);   
                 aktualizujGrafikePaneluPietra(data)
                 aktualizujWyswietlaczeStatusuWindy(data);
@@ -523,15 +522,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    function pobierzDaneIZaktualizujZdarzenia() {
+        fetch('https://winda.onrender.com/get_event_data')
+            .then(response => response.json())
+            .then(data => {
+                aktualizujZdarzenia(data);
+            })
+            .catch(error => {
+                console.error('Błąd podczas pobierania danych z serwera:', error);
+            });
+    }
+
     // Początkowe pobranie danych
     pobierzStatusWindy();
     pobierzStatystykiWindy();
     pobierzStatusSymulacji();
-    pobierzStatusWindy().then(data => {
-        aktualizujZdarzenia(data);
-    });
+    pobierzDaneIZaktualizujZdarzenia()
     setInterval(pobierzStatusWindy, 1000);
     setInterval(pobierzStatystykiWindy, 1000);
     setInterval(pobierzStatusSymulacji, 60000);
+    setInterval(pobierzDaneIZaktualizujZdarzenia, 300000);
     // setInterval(() => aktualizujGrafike(0), 3000);
 });
