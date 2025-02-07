@@ -695,9 +695,13 @@ img {
 	display: flex;
 	flex-direction: column-reverse;
 	align-content: stretch;
-	justify-content: flex-start;
+	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
+    padding-top: 25px;    /* Padding dla góry */
+    padding-right: 150px;  /* Padding dla prawej */
+    padding-bottom: 0px; /* Padding dla dołu */
+    padding-left: 150px;   /* Padding dla lewej */
 }
 
 #templatemo_footer_wrapper {
