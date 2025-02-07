@@ -681,10 +681,27 @@ img {
 
 /* footer */
 
-#templatemo_footer_wrapper_inicjatory_ruchu {
-	width: 100%;
+#templatemo_footer_wrapper_inicjatory_ruchu_container {
+	width: 80%;
 	height: 30px;
-	margin: 0 auto;
+	margin: 5px;
+	background-color: #f0f0f0;
+    color: #000000;
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+    border: 1px solid #000;
+    border-radius: 5px;
+	align-content: stretch;
+    margin-top: 25px;
+    margin-right: 150px;  
+    margin-bottom: 0px; 
+    margin-left: 150px;  
+}
+
+#templatemo_footer_wrapper_inicjatory_ruchu {
+	width: 80%;
+	height: 30px;
 	background-color: #f0f0f0;
     color: #000000;
     font-size: 16px;
@@ -698,10 +715,10 @@ img {
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-    margin-top: 25px;    /* Padding dla góry */
-    margin-right: 150px;  /* Padding dla prawej */
-    margin-bottom: 0px; /* Padding dla dołu */
-    margin-left: 150px;   /* Padding dla lewej */
+    margin-top: 25px;
+    margin-right: 150px;  
+    margin-bottom: 0px; 
+    margin-left: 150px;  
 }
 
 #templatemo_footer_wrapper {

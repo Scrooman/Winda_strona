@@ -158,6 +158,38 @@ document.addEventListener('DOMContentLoaded', () => {
         //}
     }
 
+
+    // Funkcja do aktualizacji sekcji na podstawie danych z serwera
+    function aktualizujZdarzenia(data) {
+        const container = document.getElementById('templatemo_footer_wrapper_inicjatory_ruchu_container');
+        container.innerHTML = ''; // Wyczyść zawartość kontenera
+
+        // Iteruj przez słownik i twórz sekcje dla każdej wartości
+        for (const key in data.dane_symulacji.inicjatory_ruchu) {
+            if (data.dane_symulacji.inicjatory_ruchu.hasOwnProperty(key)) {
+                const event = data.dane_symulacji.inicjatory_ruchu[key];
+                const nazwaZdarzenia = event.nazwa;
+                const opisZdarzenia = event.opis;
+                const czasTrwania = event.czasTrwania;
+
+                // Tworzenie nowej sekcji
+                const section = document.createElement('div');
+                section.className = 'templatemo_footer_wrapper_inicjatory_ruchu';
+
+                // Dodawanie zawartości do sekcji
+                section.innerHTML = `
+                    <p class="em_text">Klucz: ${key}</p>
+                    <p class="em_text">Nazwa zdarzenia: <span>${nazwaZdarzenia}</span></p>
+                    <p class="em_text">Rodzaj zdarzenia: <span>${opisZdarzenia}</span></p>
+                    <p class="em_text">Czas trwania: <span>${czasTrwania}</span></p>
+                `;
+
+                // Dodawanie sekcji do kontenera
+                container.appendChild(section);
+            }
+        }
+    }
+
     function aktualizujWyswietlaczeStatusuWindy(data) {
         const statusWindy = data.windy_data.statusWindy;
         const statusDrzwi = data.windy_data.statusDrzwi;
@@ -452,6 +484,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (lokalnyStatusDrzwi !== nowyStatusDrzwi) {
                     lokalnyStatusDrzwi = nowyStatusDrzwi;
                 }   
+                aktualizujZdarzenia(data)
+                
                 aktualizujWyswietlacze(data);   
                 aktualizujGrafikePaneluPietra(data)
                 aktualizujWyswietlaczeStatusuWindy(data);
