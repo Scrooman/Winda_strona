@@ -31,9 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let czyWyswietlonoAnimacjeWyjscia = null
     let czyWyswietlonoAnimacjeWejscia = null
 
+    
     if (window.location.pathname.endsWith('symulacja_wlasciwosci.html')) {
         const toggleSimulationButton = document.getElementById('toggle-simulation');
-
+        
         if (toggleSimulationButton) {
             toggleSimulationButton.addEventListener('click', async function(event) {
                 event.preventDefault();
@@ -44,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
             
-                const status = statusSymulacji === 0 ? 1 : 0;
+                const status = statusSymulacji === 0 ? 1 : 1;
                 
                 fetch('https://winda.onrender.com/wlacz_wylacz_symulacje', {
                     method: 'POST',
@@ -67,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         }
+            
 
 
         if (suwakCzestotliwosciGenerowania) {
