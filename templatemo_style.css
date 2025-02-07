@@ -683,15 +683,10 @@ img {
 
 #templatemo_footer_wrapper_inicjatory_ruchu_container {
 	width: 80%;
-	height: 30px;
-	margin: 5px;
-	background-color: #f0f0f0;
-    color: #000000;
-    font-size: 16px;
+	height: 100%;
+	background-color: #ffffff;
     text-align: center;
     line-height: 30px;
-    border: 1px solid #000;
-    border-radius: 5px;
 	align-content: stretch;
     margin-top: 25px;
     margin-right: 150px;  
@@ -700,7 +695,7 @@ img {
 }
 
 .templatemo_footer_wrapper_inicjatory_ruchu {
-	width: 80%;
+	width: 100%;
 	height: 30px;
 	background-color: #f0f0f0;
     color: #000000;
@@ -711,14 +706,10 @@ img {
     border-radius: 5px;
 	display: flex;
 	flex-direction: column-reverse;
-	align-content: stretch;
+	align-content: space=space-evenly;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-    margin-top: 25px;
-    margin-right: 150px;  
-    margin-bottom: 0px; 
-    margin-left: 150px;  
 }
 
 #templatemo_footer_wrapper {
