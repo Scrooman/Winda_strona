@@ -527,13 +527,11 @@ document.addEventListener('DOMContentLoaded', () => {
     pobierzStatusWindy();
     pobierzStatystykiWindy();
     pobierzStatusSymulacji();
+    pobierzStatusWindy().then(data => {
+        aktualizujZdarzenia(data);
+    });
     setInterval(pobierzStatusWindy, 1000);
     setInterval(pobierzStatystykiWindy, 1000);
     setInterval(pobierzStatusSymulacji, 60000);
-    pobierzStatusWindy().then(data => {
-        if (data) {
-            aktualizujZdarzenia(data);
-        }
-    });
     // setInterval(() => aktualizujGrafike(0), 3000);
 });
