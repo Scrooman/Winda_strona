@@ -692,6 +692,12 @@ img {
     line-height: 30px;
     border: 1px solid #000;
     border-radius: 5px;
+	display: flex;
+	flex-direction: column-reverse;
+	align-content: stretch;
+	justify-content: flex-start;
+	align-items: center;
+	flex-wrap: wrap;
 }
 
 #templatemo_footer_wrapper {
