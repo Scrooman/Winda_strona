@@ -484,7 +484,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (lokalnyStatusDrzwi !== nowyStatusDrzwi) {
                     lokalnyStatusDrzwi = nowyStatusDrzwi;
                 }   
-                aktualizujZdarzenia(data)
                 
                 aktualizujWyswietlacze(data);   
                 aktualizujGrafikePaneluPietra(data)
@@ -531,5 +530,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(pobierzStatusWindy, 1000);
     setInterval(pobierzStatystykiWindy, 1000);
     setInterval(pobierzStatusSymulacji, 60000);
+    aktualizujZdarzenia(data)
     // setInterval(() => aktualizujGrafike(0), 3000);
 });
