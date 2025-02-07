@@ -698,10 +698,10 @@ img {
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-    padding-top: 25px;    /* Padding dla góry */
-    padding-right: 150px;  /* Padding dla prawej */
-    padding-bottom: 0px; /* Padding dla dołu */
-    padding-left: 150px;   /* Padding dla lewej */
+    margin-top: 25px;    /* Padding dla góry */
+    margin-right: 150px;  /* Padding dla prawej */
+    margin-bottom: 0px; /* Padding dla dołu */
+    margin-left: 150px;   /* Padding dla lewej */
 }
 
 #templatemo_footer_wrapper {
