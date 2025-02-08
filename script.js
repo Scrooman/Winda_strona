@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const event = data.dane_symulacji.inicjatory_ruchu[key];
                 const nazwaZdarzenia = event.nazwa;
                 const opisZdarzenia = event.opis;
-                const czasTrwania = event.czasTrwania;
+                const czasTrwania = data.dane_symulacji.data_zakonczenia_inicjatora_pozytywnego;
 
                 // Tworzenie nowej sekcji
                 const section = document.createElement('div');
@@ -178,10 +178,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Dodawanie zawartości do sekcji
                 section.innerHTML = `
+                    <p class="em_text"><span>${nazwaZdarzenia}</span></p>
+                    <p class="em_text"><span>${opisZdarzenia}</span></p>
+                    <p class="em_text">Data zakończenia: <span>${czasTrwania}</span></p>
                     <p class="em_text">Klucz: ${key}</p>
-                    <p class="em_text">Nazwa zdarzenia: <span>${nazwaZdarzenia}</span></p>
-                    <p class="em_text">Rodzaj zdarzenia: <span>${opisZdarzenia}</span></p>
-                    <p class="em_text">Czas trwania: <span>${czasTrwania}</span></p>
                 `;
 
                 // Dodawanie sekcji do kontenera
