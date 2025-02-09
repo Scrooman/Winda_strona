@@ -178,8 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Dodawanie zawartości do sekcji
                 section.innerHTML = `
-                    <p class="em_text"><span>${nazwaZdarzenia}</span></p>
-                    <p class="em_text"><span>${opisZdarzenia}</span></p>
+                    <p class="em_text">Wydarzenie: <span>${nazwaZdarzenia} - ${opisZdarzenia}</span></p>
                     <p class="em_text">Poziom natężenia: <span>${poziomNatezenia}</span></p>
                     <p class="em_text">Data zakończenia: <span>${czasTrwania}</span></p>
                     <p class="em_text">Klucz: ${key}</p>
