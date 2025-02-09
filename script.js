@@ -172,9 +172,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const opisZdarzenia = event.opis;
                 const czasTrwania = formatDate(data.dane_symulacji.data_zakonczenia_inicjatora_pozytywnego)
                 const poziomNatezenia = event.poziomNatezenia;
+                const unikalnosc = event.unikalnosc;
                 // Tworzenie nowej sekcji
                 const section = document.createElement('div');
-                section.className = 'templatemo_footer_wrapper_inicjatory_ruchu';
+                if (unikalnosc === 'normalny') {
+                section.className = 'templatemo_footer_wrapper_inicjatory_ruchu_pozytywne';
+                } else if (unikalnosc === 'domyślny') {
+                section.className = 'templatemo_footer_wrapper_inicjatory_ruchu_domyslny';
+                } else if (unikalnosc === 'negatywny') {
+                section.className = 'templatemo_footer_wrapper_inicjatory_ruchu_negatywne';
+                }
 
                 // Dodawanie zawartości do sekcji
                 section.innerHTML = `
