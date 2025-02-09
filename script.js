@@ -170,8 +170,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const event = data.dane_symulacji.inicjatory_ruchu[key];
                 const nazwaZdarzenia = event.nazwa;
                 const opisZdarzenia = event.opis;
-                const czasTrwania = data.dane_symulacji.data_zakonczenia_inicjatora_pozytywnego;
-
+                const czasTrwania = formatDate(dateString)
+                const poziomNatezenia = event.poziomNatezenia;
                 // Tworzenie nowej sekcji
                 const section = document.createElement('div');
                 section.className = 'templatemo_footer_wrapper_inicjatory_ruchu';
@@ -180,6 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 section.innerHTML = `
                     <p class="em_text"><span>${nazwaZdarzenia}</span></p>
                     <p class="em_text"><span>${opisZdarzenia}</span></p>
+                    <p class="em_text">Poziom natężenia: <span>${poziomNatezenia}</span></p>
                     <p class="em_text">Data zakończenia: <span>${czasTrwania}</span></p>
                     <p class="em_text">Klucz: ${key}</p>
                 `;
@@ -187,6 +188,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Dodawanie sekcji do kontenera
                 container.appendChild(section);
             }
+        }
+    }
+
+    function formatDate(dateString) {
+        if (dateString !== null && dateString !== undefined) {
+        const date = new Date(dateString);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Miesiące są zero-indeksowane
+        const year = date.getFullYear();
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+    
+        return `${day}-${month}-${year} ${hours}:${minutes}`;
+        } else {
+            return '~~~';
         }
     }
 
