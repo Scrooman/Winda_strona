@@ -706,7 +706,7 @@ img {
     border-radius: 5px;
 	display: flex;
 	flex-direction: column-reverse;
-	align-content: space=space-evenly;
+	align-content: center;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
@@ -724,7 +724,7 @@ img {
     border-radius: 5px;
 	display: flex;
 	flex-direction: column-reverse;
-	align-content: space=space-evenly;
+	align-content: center;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
@@ -742,7 +742,7 @@ img {
     border-radius: 5px;
 	display: flex;
 	flex-direction: column-reverse;
-	align-content: space=space-evenly;
+	align-content: center;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
