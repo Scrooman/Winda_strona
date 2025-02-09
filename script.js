@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const event = data.dane_symulacji.inicjatory_ruchu[key];
                 const nazwaZdarzenia = event.nazwa;
                 const opisZdarzenia = event.opis;
-                const czasTrwania = formatDate(dateString)
+                const czasTrwania = formatDate(data.dane_symulacji.data_zakonczenia_inicjatora_pozytywnego)
                 const poziomNatezenia = event.poziomNatezenia;
                 // Tworzenie nowej sekcji
                 const section = document.createElement('div');
