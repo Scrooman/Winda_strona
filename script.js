@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function aktualizujWyswietlaczPaneluWyboruPietra(data) {
         const sekcjaWyswietlaczy = document.getElementById('sekcja-wyswietlaczy-panelu-wyboru-pietra');
         sekcjaWyswietlaczy.innerHTML = '';
-        const slownikWskazanychPieter = data.wskazane_pietra ? data.wskazane_pietra : {};
+        const slownikWskazanychPieter = data.wskazane_pietra && data.wskazane_pietra.słownik ? data.wskazane_pietra.słownik : {};
     
         for (let i = 0; i <= 10; i++) {
             const sekcja = document.createElement('div');
