@@ -198,20 +198,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function aktualizujWyswietlaczPaneluWyboruPietra(data) {
         const sekcjaWyswietlaczy = document.getElementById('sekcja-wyswietlaczy-panelu-wyboru-pietra');
+        if (!sekcjaWyswietlaczy) {
+            console.error('Element o ID "sekcja-wyswietlaczy-panelu-wyboru-pietra" nie został znaleziony.');
+            return;
+        }
         sekcjaWyswietlaczy.innerHTML = '';
+    
+        // Sprawdzenie, czy wskazane_pietra i słownik są zdefiniowane
         const slownikWskazanychPieter = data.wskazane_pietra && data.wskazane_pietra.słownik ? data.wskazane_pietra.słownik : {};
     
-        for (let i = 0; i <= 10; i++) {
+        // Iteracja od największego numeru do najmniejszego
+        for (let i = 10; i >= 0; i--) {
             const sekcja = document.createElement('div');
             sekcja.className = 'sekcja-z-przyciskiem';
     
             const img = document.createElement('img');
             if (slownikWskazanychPieter.hasOwnProperty(i)) {
-                img.src = 'images/panel_wybor_pietra_0_on.png';
-                img.alt = 'Przycisk wybrany';
+                img.src = `images/panel_wybor_pietra_${i}_on.png`;
+                img.alt = `Przycisk wybrany ${i}`;
             } else {
-                img.src = 'images/panel_wybor_pietra_0_off.png';
-                img.alt = 'Przycisk niewybrany';
+                img.src = `images/panel_wybor_pietra_${i}_off.png`;
+                img.alt = `Przycisk niewybrany ${i}`;
             }
     
             sekcja.appendChild(img);
