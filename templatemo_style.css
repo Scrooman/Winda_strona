@@ -333,6 +333,20 @@ h1 {
 	margin: 0;
 }
 
+/* Styl dla kontenera sekcji */
+.sekcja-wyswietlaczy-panelu-wyboru-pietra {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Styl dla pojedynczej sekcji */
+.sekcja-z-przyciskiem {
+    width: 48%; /* Dwie sekcje na rząd */
+    margin-bottom: 10px;
+    text-align: center;
+}
+
 .controls {
 	margin-top: 20px;
 }

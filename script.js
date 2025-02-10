@@ -196,6 +196,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function aktualizujWyswietlaczPaneluWyboruPietra(data) {
+        const sekcjaWyswietlaczy = document.getElementById('sekcja-wyswietlaczy-panelu-wyboru-pietra');
+        const slownikWskazanychPieter = data.wskazane_pietra ? data.wskazane_pietra.slownikWskazanychPieter : {};
+
+        for (let i = 0; i <= 10; i++) {
+            const sekcja = document.createElement('div');
+            sekcja.className = 'sekcja-z-przyciskiem';
+
+            const img = document.createElement('img');
+            if (slownik.hasOwnProperty(i)) {
+                img.src = 'images/panel_wybor_pietra_0_on.png';
+                img.alt = 'Przycisk wybrany';
+            } else {
+                img.src = 'images/panel_wybor_pietra_0_off.png';
+                img.alt = 'Przycisk ';
+            }
+
+            sekcja.appendChild(img);
+            sekcjaWyswietlaczy.appendChild(sekcja);
+        }
+    }
+
     function formatDate(dateString) {
         if (dateString !== null && dateString !== undefined) {
         const date = new Date(dateString);
@@ -509,7 +531,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 aktualizujWyswietlacze(data);   
                 aktualizujGrafikePaneluPietra(data)
                 aktualizujWyswietlaczeStatusuWindy(data);
-                aktualizujWyswietlaczePasazerowNaPietrze(data)          
+                aktualizujWyswietlaczePasazerowNaPietrze(data);
+                aktualizujWyswietlaczPaneluWyboruPietra(data);          
             })
             .catch(error => {
                 console.error('Błąd podczas pobierania danych z serwera:', error);
