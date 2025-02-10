@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const wyswietlaczPietra = document.getElementById('wyswietlacz-pietra');
     const wyswietlaczKierunkuJazdy = document.getElementById('wyswietlacz-kierunku-jazdy');
-    //const wyswietlaczPracyDrzwi = document.getElementById('wyswietlacz-pracy-drzwi');
+    const wyswietlaczPracyDrzwi = document.getElementById('wyswietlacz-pracy-drzwi');
     const wyswietlaczWartosciPokonanePietra = document.getElementById('wyswietlacz-wartosci-pokonane-pietra');
     const wyswietlaczWartosciPrzebytaOdleglosc = document.getElementById('wyswietlacz-wartosci-przebyta-odleglosc');
     const wyswietlaczWartosciPrzystanki = document.getElementById('wyswietlacz-wartosci-przystanki');
@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function aktualizujWyswietlacze(data) {
         const lokalizacjaWindy = data.windy_data.lokalizacjaWindy;
         const kierunekJazdy = data.windy_data.kierunekJazdy;
+        const pracaDrzwi = data.windy_data.statusDrzwi;
 
         // Aktualizacja wyświetlacza kierunku jazdy
         let kierunekJazdySymbol = '';
@@ -144,7 +145,18 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (kierunekJazdy === 1) {
             kierunekJazdySymbol = '↓';
         } else {
-            kierunekJazdySymbol = ' ';
+            kierunekJazdySymbol = '-';
+        }
+        
+        let statusDrzwiSymbol = '';
+        if (pracaDrzwi === 0) {
+            statusDrzwiSymbol = '>> <<';
+        } else if (pracaDrzwi === 1) {
+            statusDrzwiSymbol = '<< >>';
+        } else if (pracaDrzwi === 2) {
+            statusDrzwiSymbol = '][';
+        } else if (pracaDrzwi === 3) {
+            statusDrzwiSymbol = ']  [';
         }
 
         if (wyswietlaczPietra) {
@@ -153,9 +165,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (wyswietlaczKierunkuJazdy) {
             wyswietlaczKierunkuJazdy.textContent = kierunekJazdySymbol;
         }
-        //if (wyswietlaczPracyDrzwi) {
-        //    wyswietlaczPracyDrzwi.textContent = data.windy_data.polecenia; // Zakładam, że polecenia zawiera status drzwi
-        //}
+        if (wyswietlaczPracyDrzwi) {
+            wyswietlaczPracyDrzwi.textContent = statusDrzwiSymbol;
+        }
+
     }
 
 
@@ -518,7 +531,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     lokalnyRuchWindy = true;
                     animacjaWToku = true;
                     if (window.location.pathname.endsWith('/') || window.location.pathname.endsWith('/index.html')) {
-                        aktualizujRuchWindy(data); // Wykonaj funkcję aktualizujRuchWindy()
+                        aktualizujRuchWindy(data);
+                        aktualizujWyswietlaczPaneluWyboruPietra(data); 
                     }
                 } else if (data.windy_data.ruchWindy === false) {
                     lokalnyRuchWindy = false;
@@ -539,8 +553,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 aktualizujWyswietlacze(data);   
                 aktualizujGrafikePaneluPietra(data)
                 aktualizujWyswietlaczeStatusuWindy(data);
-                aktualizujWyswietlaczePasazerowNaPietrze(data);
-                aktualizujWyswietlaczPaneluWyboruPietra(data);          
+                aktualizujWyswietlaczePasazerowNaPietrze(data);         
             })
             .catch(error => {
                 console.error('Błąd podczas pobierania danych z serwera:', error);
