@@ -150,13 +150,13 @@ document.addEventListener('DOMContentLoaded', () => {
         
         let statusDrzwiSymbol = '';
         if (pracaDrzwi === 0) {
-            statusDrzwiSymbol = '>>&nbsp;&nbsp;<<';
+            statusDrzwiSymbol = '>>  <<';
         } else if (pracaDrzwi === 1) {
-            statusDrzwiSymbol = '<<&nbsp;&nbsp;>>';
+            statusDrzwiSymbol = '<<  >>';
         } else if (pracaDrzwi === 2) {
             statusDrzwiSymbol = '][';
         } else if (pracaDrzwi === 3) {
-            statusDrzwiSymbol = ']&nbsp;&nbsp;&nbsp;[';
+            statusDrzwiSymbol = ']    [';
         }
 
         if (wyswietlaczPietra) {
