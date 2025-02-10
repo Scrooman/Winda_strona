@@ -68,33 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         }
-            
-
-
-        if (suwakCzestotliwosciGenerowania) {
-            suwakCzestotliwosciGenerowania.addEventListener('input', async function() {           
-    
-                fetch('https://winda.onrender.com/zmien_czestotliwosc', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ zmiennaCzęstotliwościGenerowaniaPasażerów: suwakCzestotliwosciGenerowania.value })
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Wartość ustawiona:', data);
-                })
-                .catch(error => {
-                    console.error('Błąd połączenia:', error);
-                });
-            });
-        }
     }
 
 
