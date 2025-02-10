@@ -74,7 +74,7 @@ body {
     gap: 10px; /* Odstęp między elementami */
     padding: 10px; /* Wewnętrzny odstęp */
     margin: 10px 0; /* Zewnętrzny odstęp */
-    background-color: #ffffff; /* Kolor tła */
+    background-color: rgb(140, 158, 178)
     border: 1px solid #ccc; /* Obramowanie */
     border-radius: 5px; /* Zaokrąglenie rogów */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Cień */
@@ -338,7 +338,10 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-	width: 80px;
+    width: 80px;
+    border: 1px solid #000;
+    padding: 10px;
+    background-color: rgb(140, 158, 178)
 }
 
 /* Styl dla pojedynczej sekcji */
