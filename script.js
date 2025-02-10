@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sekcja.className = 'sekcja-z-przyciskiem';
 
             const img = document.createElement('img');
-            if (slownik.hasOwnProperty(i)) {
+            if (slownikWskazanychPieter.hasOwnProperty(i)) {
                 img.src = 'images/panel_wybor_pietra_0_on.png';
                 img.alt = 'Przycisk wybrany';
             } else {
