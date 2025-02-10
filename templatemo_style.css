@@ -74,7 +74,7 @@ body {
     gap: 10px; /* Odstęp między elementami */
     padding: 10px; /* Wewnętrzny odstęp */
     margin: 10px 0; /* Zewnętrzny odstęp */
-    background-color: rgb(140, 158, 178)
+    background-color: rgb(140, 158, 178);
     border: 1px solid #ccc; /* Obramowanie */
     border-radius: 5px; /* Zaokrąglenie rogów */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Cień */
