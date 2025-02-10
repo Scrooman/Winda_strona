@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function aktualizujWyswietlacze(data) {
         const lokalizacjaWindy = data.windy_data.lokalizacjaWindy;
         const kierunekJazdy = data.windy_data.kierunekJazdy;
-        const pracaDrzwi = data.wlasciwosci_drzwi.statusPracyDrzwi;
+        const pracaDrzwi = data.wlasciwosci_drzwi.status_pracy_drzwi;
 
         // Aktualizacja wyświetlacza kierunku jazdy
         let kierunekJazdySymbol = '';
