@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const wyswietlaczPasazerowTyp2 = document.getElementById('wyswietlacz-wartosci-pasazerow2');
     const wyswietlaczPasazerowTyp3 = document.getElementById('wyswietlacz-wartosci-pasazerow3');
     const wyswietlaczPasazerowWszystko = document.getElementById('wyswietlacz-wartosci-pasazerow4');
+    const wyswietlaczPasazerowNieobsluzonychTyp1 = document.getElementById('wyswietlacz-wartosci-pasazerow1-nieobsluzonych');
+    const wyswietlaczPasazerowNieobsluzonychTyp2 = document.getElementById('wyswietlacz-wartosci-pasazerow2-nieobsluzonych');
+    const wyswietlaczPasazerowNieobsluzonychTyp3 = document.getElementById('wyswietlacz-wartosci-pasazerow3-nieobsluzonych');
+    const wyswietlaczPasazerowNieobsluzonychWszystko = document.getElementById('wyswietlacz-wartosci-pasazerow4-nieobsluzonych');
 
     const elevator = document.getElementById('elevator');
     const shaftHeight = 1100; // Wysokość szybu
@@ -300,6 +304,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const przewiezieniPasazerowieTyp2 = data.przewiezieni_pasazerowie.typ2;
         const przewiezieniPasazerowieTyp3 = data.przewiezieni_pasazerowie.typ3;
         const przewiezieniPasazerowieWszystko = data.przewiezieni_pasazerowie.typ1 + data.przewiezieni_pasazerowie.typ2 + data.przewiezieni_pasazerowie.typ3;
+        const nieobsluzeniPasazerowieTyp1 = data.nieobsluzeni_pasazerowie.typ1;
+        const nieobsluzeniPasazerowieTyp2 = data.nieobsluzeni_pasazerowie.typ2;
+        const nieobsluzeniPasazerowieTyp3 = data.nieobsluzeni_pasazerowie.typ3;
+        const nieobsluzeniPasazerowieWszystko = data.nieobsluzeni_pasazerowie.typ1 + data.nieobsluzeni_pasazerowie.typ2 + data.nieobsluzeni_pasazerowie.typ3;
         
 
         if (wyswietlaczPasazerowTyp1) {
@@ -314,6 +322,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (wyswietlaczPasazerowWszystko) {
             wyswietlaczPasazerowWszystko.textContent = przewiezieniPasazerowieWszystko;
         }
+        if (wyswietlaczPasazerowNieobsluzonychTyp1) {
+            wyswietlaczPasazerowNieobsluzonychTyp1.textContent = nieobsluzeniPasazerowieTyp1;
+        }
+        if (wyswietlaczPasazerowNieobsluzonychTyp2) {
+            wyswietlaczPasazerowNieobsluzonychTyp2.textContent = nieobsluzeniPasazerowieTyp2;
+        }
+        if (wyswietlaczPasazerowNieobsluzonychTyp3) {
+            wyswietlaczPasazerowNieobsluzonychTyp3.textContent = nieobsluzeniPasazerowieTyp3;
+        }
+        if (wyswietlaczPasazerowNieobsluzonychWszystko) {
+            wyswietlaczPasazerowNieobsluzonychWszystko.textContent = nieobsluzeniPasazerowieWszystko;
+        }   
     }
 
     function aktualizujWyswietlaczeStatusSymulacji(data) {

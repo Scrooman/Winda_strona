@@ -270,6 +270,54 @@ body {
     border-radius: 5px;
 }
 
+.wyswietlacz-pasazerów-nieobsluzonych-typ1 {
+    width: 125px;
+    height: 30px;
+    background-color: #f0f0f0;
+    color: #000000;
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+    border: 3px solid #ff0000;
+    border-radius: 5px;
+}
+
+.wyswietlacz-pasazerów-nieobsluzonych-typ2 {
+    width: 125px;
+    height: 30px;
+    background-color: #7344a2;
+    color: #000000;
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+    border: 3px solid #ff0000;
+    border-radius: 5px;
+}
+
+.wyswietlacz-pasazerów-nieobsluzonych-typ3 {
+    width: 125px;
+    height: 30px;
+    background-color: #fbe9b9;
+    color: #000000;
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+    border: 3px solid #ff0000;
+    border-radius: 5px;
+}
+
+.wyswietlacz-pasazerów-nieobsluzonych-overall {
+    width: 125px;
+    height: 30px;
+    background-color: #f0f0f0;
+    color: #000000;
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+    border: 3px solid #ff0000;
+    border-radius: 5px;
+}
+
 h1 {
 	margin: 20px 0;
 }
