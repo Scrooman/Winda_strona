@@ -304,10 +304,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const przewiezieniPasazerowieTyp2 = data.przewiezieni_pasazerowie.typ2;
         const przewiezieniPasazerowieTyp3 = data.przewiezieni_pasazerowie.typ3;
         const przewiezieniPasazerowieWszystko = data.przewiezieni_pasazerowie.typ1 + data.przewiezieni_pasazerowie.typ2 + data.przewiezieni_pasazerowie.typ3;
-        const nieobsluzeniPasazerowieTyp1 = data.nieobsluzeni_pasazerowie.typ1;
+        /*const nieobsluzeniPasazerowieTyp1 = data.nieobsluzeni_pasazerowie.typ1; 
         const nieobsluzeniPasazerowieTyp2 = data.nieobsluzeni_pasazerowie.typ2;
         const nieobsluzeniPasazerowieTyp3 = data.nieobsluzeni_pasazerowie.typ3;
-        const nieobsluzeniPasazerowieWszystko = data.nieobsluzeni_pasazerowie.typ1 + data.nieobsluzeni_pasazerowie.typ2 + data.nieobsluzeni_pasazerowie.typ3;
+        const nieobsluzeniPasazerowieWszystko = data.nieobsluzeni_pasazerowie.typ1 + data.nieobsluzeni_pasazerowie.typ2 + data.nieobsluzeni_pasazerowie.typ3; */
         
 
         if (wyswietlaczPasazerowTyp1) {
