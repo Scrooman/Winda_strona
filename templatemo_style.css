@@ -225,37 +225,52 @@ body {
 .wyswietlacz-pasazerów-typ1 {
     width: 125px;
     height: 30px;
-    background-color: #f0f0f0;
-    color: #000000;
+    background-color: #c5c5c5;
+    color: #c5c5c5;
     font-size: 16px;
     text-align: center;
     line-height: 30px;
     border: 1px solid #000;
     border-radius: 5px;
+	text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000; /* Dodanie obramowania czcionki */
 }
 
 .wyswietlacz-pasazerów-typ2 {
     width: 125px;
     height: 30px;
     background-color: #7344a2;
-    color: #ffffff;
+    color: #7344a2;
     font-size: 16px;
     text-align: center;
     line-height: 30px;
     border: 1px solid #000;
     border-radius: 5px;
+	text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000; /* Dodanie obramowania czcionki */
 }
 
 .wyswietlacz-pasazerów-typ3 {
     width: 125px;
     height: 30px;
     background-color: #fbe9b9;
-    color: #ffffff;
+    color: #fbe9b9;
     font-size: 16px;
     text-align: center;
     line-height: 30px;
     border: 1px solid #000;
     border-radius: 5px;
+	text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000; /* Dodanie obramowania czcionki */
 }
 
 .wyswietlacz-pasazerów-overall {
