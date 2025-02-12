@@ -17,10 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const wyswietlaczPasazerowTyp2 = document.getElementById('wyswietlacz-wartosci-pasazerow2');
     const wyswietlaczPasazerowTyp3 = document.getElementById('wyswietlacz-wartosci-pasazerow3');
     const wyswietlaczPasazerowWszystko = document.getElementById('wyswietlacz-wartosci-pasazerow4');
-    const wyswietlaczPasazerowNieobsluzonychTyp1 = document.getElementById('wyswietlacz-wartosci-pasazerow1-nieobsluzonych');
-    const wyswietlaczPasazerowNieobsluzonychTyp2 = document.getElementById('wyswietlacz-wartosci-pasazerow2-nieobsluzonych');
-    const wyswietlaczPasazerowNieobsluzonychTyp3 = document.getElementById('wyswietlacz-wartosci-pasazerow3-nieobsluzonych');
-    const wyswietlaczPasazerowNieobsluzonychWszystko = document.getElementById('wyswietlacz-wartosci-pasazerow4-nieobsluzonych');
+    const wyswietlaczPasazerowNieobsluzonychTyp1 = document.getElementById('wyswietlacz-wartosci-nieobsluzonych-pasazerow1');
+    const wyswietlaczPasazerowNieobsluzonychTyp2 = document.getElementById('wyswietlacz-wartosci-nieobsluzonych-pasazerow2');
+    const wyswietlaczPasazerowNieobsluzonychTyp3 = document.getElementById('wyswietlacz-wartosci-nieobsluzonych-pasazerow3');
+    const wyswietlaczPasazerowNieobsluzonychWszystko = document.getElementById('wyswietlacz-wartosci-nieobsluzonych-pasazerow4');
 
     const elevator = document.getElementById('elevator');
     const shaftHeight = 1100; // Wysokość szybu
