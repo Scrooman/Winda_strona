@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const wyswietlaczWartosciPrzebytaOdleglosc = document.getElementById('wyswietlacz-wartosci-przebyta-odleglosc');
     const wyswietlaczWartosciPrzystanki = document.getElementById('wyswietlacz-wartosci-przystanki');
     const wyswietlaczWartosciStatusSymulacji = document.getElementById('wyswietlacz-wartosci-status-symulacji')
-    const suwakCzestotliwosciGenerowania = document.getElementById('suwak-czestotliwosci-generowania');
-    const suwakCzestotliwosciGenerowaniaWartosc = document.getElementById('suwak-czestotliwosci-generowania-wartosc');
     const wyswietlaczStatusWindy = document.getElementById('wyswietlacz-wartosci-status-windy');
     const wyswietlaczStatusDrzwi = document.getElementById('wyswietlacz-wartosci-status-drzwi');
     const wyswietlaczTrybPracy = document.getElementById('wyswietlacz-wartosci-tryb-pracy');
@@ -86,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPosition = targetFloor;
     };
 
-    // Funkcja do aktualizacji pozycji windy @@@@ należy wysyłać z serwera informacje o statusie ruchu windy i drzwi aby na tej podstawie uruchamiac animację lub ja zatrzymywać
+    // Funkcja do aktualizacji pozycji windy
     function aktualizujRuchWindy(data) {
         const poleceniaWindy = data.windy_data.polecenia;
         piętroStartuRuchuWindy = data.windy_data.lokalizacjaWindy    
@@ -476,7 +474,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function aktualizujGrafikePaneluPietra(data) {
         // Pobierz wszystkie elementy z klasą 'przyciski-sekcja'
         const przyciskiSekcjaElements = document.querySelectorAll('.przyciski-sekcja');
-        const slownik = data.wybrane_przyciski ? data.wybrane_przyciski.słownik : {};
+        const slownik = data.wybrane_przyciski && data.wybrane_przyciski.słownik ? data.wybrane_przyciski.słownik : {};
     
         if (!slownik) {
             console.error('Slownik is undefined');
