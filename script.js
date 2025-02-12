@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sekcjaWyswietlaczy.innerHTML = '';
     
         // Sprawdzenie, czy wskazane_pietra i słownik są zdefiniowane
-        const slownikWskazanychPieter = data.wskazane_pietra && data.wskazane_pietra.słownik ? data.wskazane_pietra.słownik : {};
+        const slownikWskazanychPieter = data.wskazane_pietra;
     
         // Iteracja od największego numeru do najmniejszego
         for (let i = 10; i >= 0; i--) {
