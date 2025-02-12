@@ -474,7 +474,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function aktualizujGrafikePaneluPietra(data) {
         // Pobierz wszystkie elementy z klasą 'przyciski-sekcja'
         const przyciskiSekcjaElements = document.querySelectorAll('.przyciski-sekcja');
-        const slownik = data.wybrane_przyciski && data.wybrane_przyciski.słownik ? data.wybrane_przyciski.słownik : {};
+        const slownik = data.wybrane_przyciski.słownik
     
         if (!slownik) {
             console.error('Slownik is undefined');
