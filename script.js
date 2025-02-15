@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 console.log(`Zdarzenie ${key} zostało usunięte.`);
                 // Ponownie pobierz dane i zaktualizuj wyświetlacz
-                pobierzDaneIZaktualizujZdarzeniaNegatywne();
+                pobierzDaneIZaktualizujZdarzenia();
             } else {
                 console.error('Błąd podczas usuwania zdarzenia:', response.statusText);
             }
