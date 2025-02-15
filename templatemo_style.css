@@ -492,6 +492,22 @@ img {
 	text-decoration: none;
 }
 
+.button_02 a{
+	clear: both;
+	display: block;
+	width: 100px;
+	height: 23px;
+	padding-top: 5px;
+	background: url(images/templatemo_button_01.png) no-repeat;
+	
+	
+	color: rgb(189, 128, 107);
+	font-size: 13px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+}
+
 
 .header_01 {
 	clear: both;

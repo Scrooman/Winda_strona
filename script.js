@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Tworzenie przycisku do usunięcia zdarzenia
                 const button = document.createElement('button');
-                button.className = 'button_01';
+                button.className = 'button_02';
                 button.textContent = 'Usuń zdarzenie';
                 button.addEventListener('click', () => {
                     usunZdarzenieNegatywne(key);
