@@ -147,6 +147,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+
+    function aktualizujZdarzeniaNegatywne(data) {
+        const container = document.getElementById('templatemo_footer_wrapper_inicjatory_ruchu_negatywne_container');
+        container.innerHTML = ''; // Wyczyść zawartość kontenera
+
+        // Iteruj przez słownik i twórz sekcje dla każdej wartości
+        for (const key in data.dane_symulacji.inicjatory_ruchu_negatywne) {
+            if (data.dane_symulacji.inicjatory_ruchu_negatywne.hasOwnProperty(key)) {
+                const event = data.dane_symulacji.inicjatory_ruchu_negatywne[key];
+                const nazwaZdarzenia = event.nazwa;
+                const opisZdarzenia = event.opis;
+                const poziomNatezenia = event.poziomNatezenia;
+                const unikalnosc = event.unikalnosc;
+                const pietro = event.awariaKierunkujazdy;
+                // Tworzenie nowej sekcji
+                const section = document.createElement('div');
+                if (unikalnosc === 'normalny') {
+                section.className = 'templatemo_footer_wrapper_inicjatory_ruchu_negatywne';
+                }
+
+                // Dodawanie zawartości do sekcji
+                section.innerHTML = `
+                    <p class="em_text">Wydarzenie: <span>${nazwaZdarzenia} - ${opisZdarzenia}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span></p>
+                    <p class="em_text">Poziom natężenia: <span>${poziomNatezenia}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span></p>
+                    <p class="em_text">Piętro: <span>${pietro}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span></p>
+                    `;
+
+                // Dodawanie sekcji do kontenera
+                container.appendChild(section);
+            }
+        }
+    }
+
+
     // Funkcja do aktualizacji sekcji na podstawie danych z serwera
     function aktualizujZdarzenia(data) {
         const container = document.getElementById('templatemo_footer_wrapper_inicjatory_ruchu_container');
@@ -349,15 +383,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
     }
-        
-
-    function aktualizujSuwakCzestotliosci(data) {
-        const zmiennaCzestotliwosciGenerowaniaPasażerów = data.zmiennaCzestotliwosciGenerowaniaPasażerów;
-        if (!isNaN(zmiennaCzestotliwosciGenerowaniaPasażerów)) {
-            suwakCzestotliwosciGenerowania.value = zmiennaCzestotliwosciGenerowaniaPasażerów;
-            suwakCzestotliwosciGenerowaniaWartosc.textContent = zmiennaCzestotliwosciGenerowaniaPasażerów;
-        }
-    }
 
 
     function aktualizujWyswietlaczePasazerowNaPietrze(data) {
@@ -540,7 +565,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (lokalnyStatusDrzwi !== nowyStatusDrzwi) {
                     lokalnyStatusDrzwi = nowyStatusDrzwi;
                 }   
-                //aktualizujZdarzenia(data)
+
                 aktualizujWyswietlacze(data);   
                 aktualizujGrafikePaneluPietra(data)
                 aktualizujWyswietlaczeStatusuWindy(data);
@@ -569,7 +594,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const statusSymulacji = data.statusSymulacji;
                 const zmiennaCzestotliwosciGenerowaniaPasażerów = data.zmiennaCzestotliwosciGenerowaniaPasażerów;
                 aktualizujWyswietlaczeStatusSymulacji(data)
-                aktualizujSuwakCzestotliosci(data); 
                 return statusSymulacji;
             })
             .catch(error => {
@@ -583,6 +607,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 aktualizujZdarzenia(data);
+                aktualizujZdarzeniaNegatywne(data)
             })
             .catch(error => {
                 console.error('Błąd podczas pobierania danych z serwera:', error);
