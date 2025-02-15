@@ -146,9 +146,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-    
+
     function usunZdarzenieNegatywne(key) {
-        fetch(`https://winda.onrender.com/delete_event/${key}`, {
+        fetch(`https://winda.onrender.com/dezaktywuj_inicjator_negatywny/${key}`, {
             method: 'DELETE'
         })
         .then(response => {
@@ -194,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Tworzenie przycisku do usunięcia zdarzenia
                 const button = document.createElement('button');
+                button.className = 'button_01';
                 button.textContent = 'Usuń zdarzenie';
                 button.addEventListener('click', () => {
                     usunZdarzenieNegatywne(key);
