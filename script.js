@@ -148,8 +148,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function usunZdarzenieNegatywne(key) {
-        fetch(`https://winda.onrender.com/dezaktywuj_inicjator_negatywny/${key}`, {
-            method: 'DELETE'
+        fetch('https://winda.onrender.com/dezaktywuj_inicjator_negatywny', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ kluczZdarzenia: key })
         })
         .then(response => {
             if (response.ok) {
