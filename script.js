@@ -146,6 +146,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
+    
+    function usunZdarzenieNegatywne(key) {
+        fetch(`https://winda.onrender.com/delete_event/${key}`, {
+            method: 'DELETE'
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log(`Zdarzenie ${key} zostało usunięte.`);
+                // Ponownie pobierz dane i zaktualizuj wyświetlacz
+                pobierzDaneIZaktualizujZdarzeniaNegatywne();
+            } else {
+                console.error('Błąd podczas usuwania zdarzenia:', response.statusText);
+            }
+        })
+        .catch(error => {
+            console.error('Błąd podczas usuwania zdarzenia:', error);
+        });
+    }
 
 
     function aktualizujZdarzeniaNegatywne(data) {
@@ -160,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const opisZdarzenia = event.opis;
                 const poziomNatezenia = event.poziomNatezenia;
                 const unikalnosc = event.unikalnosc;
-                const pietro = event.awariaKierunkujazdy;
+                const pietro = event.awariaKierunkuJazdy;
                 // Tworzenie nowej sekcji
                 const section = document.createElement('div');
                 if (unikalnosc === 'normalny') {
@@ -173,6 +191,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="em_text">Poziom natężenia: <span>${poziomNatezenia}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span></p>
                     <p class="em_text">Piętro: <span>${pietro}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span></p>
                     `;
+
+                // Tworzenie przycisku do usunięcia zdarzenia
+                const button = document.createElement('button');
+                button.textContent = 'Usuń zdarzenie';
+                button.addEventListener('click', () => {
+                    usunZdarzenieNegatywne(key);
+                });
+
+                // Dodawanie przycisku do sekcji
+                section.appendChild(button);
 
                 // Dodawanie sekcji do kontenera
                 container.appendChild(section);
