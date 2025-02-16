@@ -495,10 +495,11 @@ img {
 .button_02 {
 	clear: both;
 	display: block;
-	width: 100px;
-	height: 23px;
+	width: 130px;
+	height: 40px;
 	padding-top: 5px;
 	background: url(images/templatemo_button_01.png) no-repeat;
+	background-size: cover;
 	
 	
 	color: rgb(189, 128, 107);
@@ -820,7 +821,7 @@ img {
 
 .templatemo_footer_wrapper_inicjatory_ruchu_negatywne {
 	width: 100%;
-	height: 30px;;
+	height: 45px;;
 	background-color: rgb(17, 17, 17);
     color: rgb(189, 128, 107);
     font-size: 16px;
@@ -838,7 +839,7 @@ img {
 
 .templatemo_footer_wrapper_inicjatory_ruchu_domyslny {
 	width: 100%;
-	height: 30px;
+	height: 45px;
 	background-color: rgb(17, 17, 17);
     color: rgb(107, 207, 255);
     font-size: 16px;
@@ -856,7 +857,7 @@ img {
 
 .templatemo_footer_wrapper_inicjatory_ruchu_pozytywne {
 	width: 100%;
-	height: 30px;
+	height: 45px;
 	background-color: rgb(17, 17, 17);
     color: rgb(0, 128, 0);
     font-size: 16px;
@@ -874,7 +875,7 @@ img {
 
 .templatemo_footer_wrapper_inicjatory_ruchu_negatywne {
 	width: 100%;
-	height: 30px;
+	height: 45px;
 	background-color: rgb(17, 17, 17);
     color: rgb(189, 128, 107);
     font-size: 16px;
