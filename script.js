@@ -546,7 +546,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const match = id.match(/\d+$/);
             
             if (match) {
-                const idNumber = match[0]; // Pobierz wartość jako string
+                const idNumber = parseInt(match[0], 10); // Pobierz wartość jako liczba
                 const img = element.querySelector('img');
     
                 // Sprawdź, czy idNumber jest w słowniku
