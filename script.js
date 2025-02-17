@@ -532,7 +532,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function aktualizujGrafikePaneluPietra(data) {
         // Pobierz wszystkie elementy z klasą 'przyciski-sekcja'
         const przyciskiSekcjaElements = document.querySelectorAll('.przyciski-sekcja');
-        const slownik = data.wybrane_przyciski
+        const slownik = data.wybrane_przyciski;
+        const slownikWylaczonychPieter = data.wylaczone_pietra.wylaczone_pietra;
     
         if (!slownik) {
             console.error('Slownik is undefined');
@@ -558,6 +559,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {   
                         img.src = 'images/panel-pietra.png';
                     }
+                } else if (slownikWylaczonychPieter.hasOwnProperty(idNumber)) {
+                    img.src = 'images/panel-pietra-wylaczony.png';
                 } else {
                     // Wyświetl obrazek panel-pietra.png, jeśli idNumber nie jest w słowniku
                     img.src = 'images/panel-pietra.png';
