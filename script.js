@@ -547,16 +547,17 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (match) {
                 const idNumber = parseInt(match[0], 10); // Pobierz wartość jako liczba
+                const idNumberStr = match[0]; // Pobierz wartość jako string
                 const img = element.querySelector('img');
     
                 // Sprawdź, czy idNumber jest w słowniku
                 if (slownikWylaczonychPieter.includes(idNumber)) {
                     img.src = 'images/panel-pietra-wylaczony.png';
-                } else if (slownik.hasOwnProperty(idNumber) && !slownikWylaczonychPieter.includes(idNumber)) {
+                } else if (slownik.hasOwnProperty(idNumberStr) && !slownikWylaczonychPieter.includes(idNumber)) {
                     // Wyświetl odpowiednią grafikę na podstawie wartości w słowniku
-                    if (slownik[idNumber] === 2) {
+                    if (slownik[idNumberStr] === 2) {
                         img.src = 'images/panel-pietra-gora.png';
-                    } else if (slownik[idNumber] === 3) {
+                    } else if (slownik[idNumberStr] === 3) {
                         img.src = 'images/panel-pietra-dol.png';
                     } else {   
                         img.src = 'images/panel-pietra.png';
