@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const pietro = event.awariaKierunkuJazdy;
                 // Tworzenie nowej sekcji
                 const section = document.createElement('div');
-                if (unikalnosc === 'normalny') {
+                if (unikalnosc === 'normalny' || unikalnosc === 'rzadki' || unikalnosc === 'unikalny') {
                 section.className = 'templatemo_footer_wrapper_inicjatory_ruchu_negatywne';
                 }
 
@@ -533,7 +533,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Pobierz wszystkie elementy z klasą 'przyciski-sekcja'
         const przyciskiSekcjaElements = document.querySelectorAll('.przyciski-sekcja');
         const slownik = data.wybrane_przyciski;
-        const slownikWylaczonychPieter = data.wylaczone_pietra.wylaczone_pietra;
+        const slownikWylaczonychPieter = data.wylaczone_pietra ? data.wylaczone_pietra.wylaczone_pietra : {};
     
         if (!slownik) {
             console.error('Slownik is undefined');
@@ -550,7 +550,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const img = element.querySelector('img');
     
                 // Sprawdź, czy idNumber jest w słowniku
-                if (slownik.hasOwnProperty(idNumber)) {
+                if (Object.values(slownikWylaczonychPieter).includes(idNumber)) {
+                    img.src = 'images/panel-pietra-wylaczony.png';
+                } else if (slownik.hasOwnProperty(idNumber)) {
                     // Wyświetl odpowiednią grafikę na podstawie wartości w słowniku
                     if (slownik[idNumber] === 2) {
                         img.src = 'images/panel-pietra-gora.png';
@@ -559,8 +561,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {   
                         img.src = 'images/panel-pietra.png';
                     }
-                } else if (slownikWylaczonychPieter.hasOwnProperty(idNumber)) {
-                    img.src = 'images/panel-pietra-wylaczony.png';
                 } else {
                     // Wyświetl obrazek panel-pietra.png, jeśli idNumber nie jest w słowniku
                     img.src = 'images/panel-pietra.png';
