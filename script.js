@@ -552,7 +552,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Sprawdź, czy idNumber jest w słowniku
                 if (slownikWylaczonychPieter.includes(idNumber)) {
                     img.src = 'images/panel-pietra-wylaczony.png';
-                } else if (slownik.hasOwnProperty(idNumber)) {
+                } else if (slownik.hasOwnProperty(idNumber) && !slownikWylaczonychPieter.includes(idNumber)) {
                     // Wyświetl odpowiednią grafikę na podstawie wartości w słowniku
                     if (slownik[idNumber] === 2) {
                         img.src = 'images/panel-pietra-gora.png';
