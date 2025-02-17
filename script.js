@@ -533,7 +533,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Pobierz wszystkie elementy z klasą 'przyciski-sekcja'
         const przyciskiSekcjaElements = document.querySelectorAll('.przyciski-sekcja');
         const slownik = data.wybrane_przyciski;
-        const slownikWylaczonychPieter = data.wylaczone_pietra ? data.wylaczone_pietra.wylaczone_pietra : [];
+        const slownikWylaczonychPieter = data.wylaczone_pietra.wylaczone_pietra
     
         if (!slownik) {
             console.error('Slownik is undefined');
