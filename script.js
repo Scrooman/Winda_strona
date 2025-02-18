@@ -583,6 +583,7 @@ document.addEventListener('DOMContentLoaded', () => {
         container.innerHTML = '<div class="header_03">Odkryci pasażerowie</div>';
     
         const slownik = data.odkryci_pasazerowie ? data.odkryci_pasazerowie : {};
+        const sections = [];
     
         for (const key in slownik) {
             if (slownik.hasOwnProperty(key)) {
