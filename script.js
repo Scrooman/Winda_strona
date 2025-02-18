@@ -650,7 +650,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 aktualizujWyswietlacze(data);   
                 aktualizujGrafikePaneluPietra(data)
                 aktualizujWyswietlaczeStatusuWindy(data);
-                aktualizujWyswietlaczePasazerowNaPietrze(data);         
+                aktualizujWyswietlaczePasazerowNaPietrze(data);   
+                aktualizujOdkrytychPasazerow(data);      
             })
             .catch(error => {
                 console.error('Błąd podczas pobierania danych z serwera:', error);
