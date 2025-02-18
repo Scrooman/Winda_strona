@@ -717,6 +717,8 @@ img {
 }
 
 #column_w300 {
+	max-height: 400px; /* Ustaw maksymalną wysokość kontenera */
+	overflow-y: auto;  /* Włącz pionowe przewijanie */
 	float: right;
 	width: 298px;
 	background: #efefef;
