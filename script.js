@@ -580,7 +580,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     
         // Wyczyść zawartość kontenera
-        container.innerHTML = '<div class="header_03">Najnowsi unikalni pasażerowie</div>';
+        container.innerHTML = '<div class="header_03">Odkryci pasażerowie</div>';
     
         const slownik = data.odkryci_pasazerowie ? data.odkryci_pasazerowie : {};
     
