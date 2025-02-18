@@ -613,6 +613,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 container.appendChild(section);
             }
         }
+
+        // Sortowanie sekcji według malejącej daty
+        sections.sort((a, b) => {
+            const dateA = new Date(a.querySelector('.news_date').textContent);
+            const dateB = new Date(b.querySelector('.news_date').textContent);
+            return dateB - dateA;
+        });
+
+        // Dodawanie posortowanych sekcji do kontenera
+        sections.forEach(section => {
+            container.appendChild(section);
+        });
+
     }
 
 
