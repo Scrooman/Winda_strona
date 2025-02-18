@@ -572,6 +572,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    function aktualizujOdkrytychPasazerow(data) {
+        const container = document.getElementById('column_w300');
+        if (!container) {
+            console.error('Element o ID "column_w300" nie został znaleziony.');
+            return;
+        }
+    
+        // Wyczyść zawartość kontenera
+        container.innerHTML = '<div class="header_03">Najnowsi unikalni pasażerowie</div>';
+    
+        const slownik = data.odkryci_pasazerowie ? data.odkryci_pasazerowie.słownik : {};
+    
+        for (const key in slownik) {
+            if (slownik.hasOwnProperty(key)) {
+                const pasazer = slownik[key];
+                const nazwaPasazera = pasazer.nazwa;
+                const opisPasazera = pasazer.opis;
+                const ikonaPasazera = pasazer.ikona;
+                const dataOdkryciaPasazera = pasazer.dataOdkrycia;
+                const liczbaPodrozyPasazerta = pasazer.liczbaPodrozy;
+                const unikalnoscPasazera = pasazer.unikalnosc;
+                const section = document.createElement('div');
+                section.className = 'column_w300_section_01';
+    
+                section.innerHTML = `
+                    <div class="news_image_wrapper">
+                        <img src="pasazerowie/${ikonaPasazera}.png" alt="image" /> 
+                    </div>
+                    <div class="news_content">
+                        <div class="news_date">${dataOdkryciaPasazera}</div>
+                        <div class="header_04"><a href="#">${nazwaPasazera}</a></div>
+                        <p>${opisPasazera}</p>
+                        <p>${liczbaPodrozyPasazerta}</p>
+                        <p>${unikalnoscPasazera}</p>
+                    </div>
+                    <div class="cleaner"></div>
+                `;
+    
+                container.appendChild(section);
+            }
+        }
+    }
+
+
     // Funkcja do pobierania danych z serwera
     function pobierzStatusWindy() {
         fetch('https://winda.onrender.com/get_winda_status')
