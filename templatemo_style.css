@@ -717,7 +717,7 @@ img {
 }
 
 #column_w300 {
-	max-height: 400px; /* Ustaw maksymalną wysokość kontenera */
+	max-height: 600px; /* Ustaw maksymalną wysokość kontenera */
 	overflow-y: auto;  /* Włącz pionowe przewijanie */
 	float: right;
 	width: 298px;
@@ -778,7 +778,7 @@ img {
 
 .news_content {
 	float: right;
-	width: 170px;
+	width: 160px;
 }
 
 .news_content .news_date {
