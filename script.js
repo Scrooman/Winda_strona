@@ -456,7 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 // Dodaj nowe obrazki
                                 rodzajePasazerow[typ].forEach(wartosc => {
                                     const img = document.createElement('img');
-                                    img.src = `images/pasazerowie/${wartosc}.png`;
+                                    img.src = `images/pasazerowie/pasazer${wartosc}.png`;
                                     img.alt = 'Pasażer';
                                     img.classList.add(typ); // Dodaj klasę, aby można było łatwo znaleźć obrazek
                                     element.appendChild(img);
