@@ -456,7 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 // Dodaj nowe obrazki
                                 rodzajePasazerow[typ].forEach(wartosc => {
                                     const img = document.createElement('img');
-                                    img.src = `images/${wartosc}.png`;
+                                    img.src = `images/pasazerowie/${wartosc}.png`;
                                     img.alt = 'Pasażer';
                                     img.classList.add(typ); // Dodaj klasę, aby można było łatwo znaleźć obrazek
                                     element.appendChild(img);
@@ -599,7 +599,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
                 section.innerHTML = `
                     <div class="news_image_wrapper">
-                        <img src="pasazerowie/${ikonaPasazera}.png" alt="image" /> 
+                        <img src="images/pasazerowie/${ikonaPasazera}.png" alt="image" /> 
                     </div>
                     <div class="news_content">
                         <div class="news_date">${dataOdkryciaPasazera}</div>
