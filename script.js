@@ -605,8 +605,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="news_date">${dataOdkryciaPasazera}</div>
                         <div class="header_04"><a href="#">${nazwaPasazera}</a></div>
                         <p>${opisPasazera}</p>
-                        <p>${liczbaPodrozyPasazerta}</p>
-                        <p>${unikalnoscPasazera}</p>
+                        <p>Liczba podróży:&nbsp;${liczbaPodrozyPasazerta}</p>
+                        <p>Unikalność:&nbsp;${unikalnoscPasazera}</p>
                     </div>
                     <div class="cleaner"></div>
                 `;
